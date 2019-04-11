@@ -1,6 +1,20 @@
 // Typography
 
 // @font-face
+// Media Sans Regular
+@font-face {
+  font-family: 'Media Sans Condensed';
+  src: url('../../fonts/mediasanscondensedweb-black-TRIAL.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+// Media Sans Black
+@font-face {
+  font-family: 'Media Sans Semicondensed';
+  src: url('../../fonts/mediasanssemicondensedweb-black-TRIAL.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 // Font-family mixins
 /// example:
@@ -9,6 +23,23 @@
 ///   font-weight: normal;
 ///   font-family: 'Custom Font Family';
 /// }
+@mixin font-display-condensed {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'Media Sans Condensed', sans-serif;
+}
+
+@mixin font-display-semicondensed {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'Media Sans Semicondensed', sans-serif;
+}
+
+@mixin font-copy {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'Crimson Text', serif;
+}
 
 /// Mixin to allow us to concisely define all aspects of a paragraph style (except for family.)
 /// @param {number} $size - Font size specified in pixels (without 'px')
@@ -41,3 +72,51 @@
 /// .h1 {
 ///   @include h1;
 /// }
+@mixin h1 {
+  @include font-display-semicondensed;
+  @include paragraph-style(76, 72, .01em, normal, uppercase);
+}
+.h1 {
+  @include h1;
+}
+
+@mixin h2 {
+  @include font-display-semicondensed;
+  @include paragraph-style(48, 48, 0, normal, uppercase);
+}
+.h2 {
+  @include h2;
+}
+
+@mixin h3 {
+  @include font-display-semicondensed;
+  @include paragraph-style(35, 40, .02em, normal, uppercase);
+}
+.h3 {
+  @include h3;
+}
+
+@mixin h4 {
+  @include font-copy;
+  @include paragraph-style(22, 32, .05em, 700);
+}
+.h4 {
+  @include h4;
+}
+
+@mixin h5 {
+  @include font-copy;
+  font-style: italic;
+  @include paragraph-style(17, 24, .01em, normal);
+}
+.h5 {
+  @include h5;
+}
+
+@mixin p {
+  @include font-copy;
+  @include paragraph-style(22, 32, .05em, normal);
+}
+.p {
+  @include p;
+}

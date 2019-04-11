@@ -63,3 +63,56 @@
     @content;
   }
 }
+
+// Outline
+@mixin outline($color:white) {
+  box-shadow: 1px 1px 0 color($color), -1px -1px 0px color($color), -1px 1px 0 color($color), 1px -1px 0 color($color);
+}
+@mixin outlined-box($color:white) {
+  position: relative;
+  &::after {
+    top: 0;
+    left: 0;
+    right: -1px;
+    content: '';
+    bottom: -1px;
+    position: absolute;
+    pointer-events: none;
+    border: 1px solid color($color);
+  }
+}
+
+// Boxed Text
+@mixin boxed-text($size, $color:white) {
+  @include clearfix;
+  span {
+    z-index: 1;
+    clear: left;
+    float: left;
+    width: auto;
+    position: relative;
+    margin: 1px 0 0 1px;
+    padding-right: $beat;
+    display: inline-block;
+    height: #{($beat * $size) - 1px};
+    &::after {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      @include outline($color);
+    }
+
+    @if $size == 1 {
+      line-height: 1.6;
+    } @else if $size == 2 {
+      line-height: 1.1;
+    } @else if $size == 3 {
+      line-height: 1;
+    }
+  }
+}

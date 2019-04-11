@@ -1,5 +1,42 @@
 // Footer
 
 .site-footer {
-  
+  padding: $padding-sm 0;
+  color: color(offwhite);
+  background-color: color(black);
+
+  @include media-md {
+    padding: $padding-md 0;
+  }
+
+  .logo {
+    .logo-mark {
+      border: 1px solid color(offwhite);
+      svg {
+        fill: color(offwhite);
+      }
+    }
+
+    @include media-md {
+      margin-left: -$beat * 4;
+    }
+  }
+
+  .gfoa-link {
+    a {
+      @include h5;
+      display: block;
+      font-style: italic;
+      border-radius: 8px;
+      color: color(black);
+      text-decoration: none;
+      border: 1px solid color(black);
+      padding: #{$beat / 2} $beat $beat;
+      background-color: color(offwhite);
+    }
+
+    @include media-md {
+      max-width: 408px;
+    }
+  }
 }

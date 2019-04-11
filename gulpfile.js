@@ -24,7 +24,7 @@ var jshint       = require('gulp-jshint');
 
 // Various config
 var conf = {
-  siteUrl: 'starthere.static'
+  siteUrl: 'gfoa-financial-foundations.static'
 };
 
 // CLI options

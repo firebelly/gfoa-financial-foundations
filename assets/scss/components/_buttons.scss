@@ -1,0 +1,15 @@
+// Buttons
+
+.button {
+  @include h5;
+  height: $beat * 2;
+  text-align: center;
+  border-radius: 10px;
+  padding: 0 $beat * 3;
+  text-decoration: none;
+  display: inline-block;
+  line-height: $beat * 2;
+  border: 1px solid color(black);
+  box-shadow: 0 6px 0 color(black);
+  background-color: color(offwhite);
+}

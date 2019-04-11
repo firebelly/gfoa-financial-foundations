@@ -31,7 +31,7 @@ var Main = (function($) {
     transitionElements = [];
 
     // Init functions
-    _testInit();
+    _backgroundGrid();
 
     // Esc handlers
     $(document).keyup(function(e) {
@@ -42,8 +42,24 @@ var Main = (function($) {
 
   } // end init()
 
-  function _testInit() {
-    console.log('Testing testing testing...is this thing on?');
+  function _backgroundGrid() {
+    var beat = 24;
+
+    $('.background-grid').each(function() {
+      var $inner = $(this).find('.-inner');
+      var columns = Math.floor($inner.outerWidth() / beat);
+      var rows = Math.floor($inner.outerHeight() / beat);
+
+      $inner.append('<div class="grid-columns"></div><div class="grid-rows"></div>');
+
+      for (var c = 0; c <= columns; c++) {
+        $inner.find('.grid-columns').append('<div class="grid-column" style="left:'+ beat*c +'px;"></div>');
+      }
+
+      for (var r = 0; r <= rows; r++) {
+        $inner.find('.grid-rows').append('<div class="grid-row" style="top: '+ beat*r +'px;"></div>');
+      }
+    });
   }
 
   // Disabling transitions on certain elements on resize

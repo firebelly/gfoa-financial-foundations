@@ -3,7 +3,11 @@
 // Colors
 $colors: (
   white: #ffffff,
-  black: #333333
+  offwhite: #ece9e5,
+  black: #393839,
+  green: #67c18c,
+  gold: #a98352,
+  blue: #2a5caa
 );
 
 @function color($color-name) {
@@ -18,9 +22,9 @@ $breakpoint-nav: 1100px;
 $breakpoint-xl: 1200px;
 
 // Site Wrapper
-$sitewrapper: 1400px;
+$sitewrapper: 1280px;
 
 // Padding/spacing
-$beat: 10px;
-$padding-sm: 20px;
-$padding-md: 40px;
+$beat: 24px;
+$padding-sm: 74px;
+$padding-md: $padding-sm * 2;
