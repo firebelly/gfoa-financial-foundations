@@ -1,6 +1,8 @@
 // Footer
 
 .site-footer {
+  overflow: hidden;
+  position: relative;
   padding: $padding-sm 0;
   color: color(offwhite);
   background-color: color(black);
@@ -28,21 +30,85 @@
     @include p2;
   }
 
+  .social {
+    @include media-md {
+      @include clearfix;
+    }
+  }
+
+  .social-links {
+    @extend .semantic-list;
+
+    @include media-md {
+      float: right;
+      display: flex;
+      width: $beat * 10;
+      justify-content: space-between;
+    }
+
+    li {
+      display: inline-block;
+    }
+
+    a {
+      width: 31px;
+      height: 31px;
+      display: flex;
+      border-radius: 50%;
+      border: 1px solid color(white);
+
+      svg {
+        margin: auto;
+        fill: color(white);
+        display: inline-block;
+        &.icon-facebook {
+          width: 6px;
+          height: 13px;
+        }
+        &.icon-twitter {
+          width: 13px;
+          height: 10px;
+        }
+        &.icon-linkedin {
+          width: 11px;
+          height: 11px;
+        }
+      }
+    }
+  }
+
   .gfoa-link {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    transform: translateY($beat);
+
     a {
       @include h5;
-      display: block;
+      display: flex;
       font-style: italic;
       border-radius: 8px;
       color: color(black);
       text-decoration: none;
+      justify-content: space-between;
       border: 1px solid color(black);
-      padding: #{$beat / 2} $beat $beat;
       background-color: color(offwhite);
+      padding: #{$beat / 2} $beat $beat * 2;
+
+      svg {
+        top: 2px;
+        width: 54px;
+        height: 18px;
+        fill: color(black);
+        position: relative;
+      }
     }
 
     @include media-md {
-      max-width: 408px;
+      a {
+        max-width: 408px;
+      }
     }
   }
 }

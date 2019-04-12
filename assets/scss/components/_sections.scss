@@ -25,10 +25,10 @@
     }
 
     .start {
+      @extend .button-reset;
       z-index: 1;
       padding: 0;
       cursor: pointer;
-      appearance: none;
       width: $beat * 5;
       left: $padding-md;
       position: absolute;
@@ -47,7 +47,6 @@
         font-style: normal;
         position: absolute;
         bottom: #{$beat - 5px};
-        @include boxed-text(1);
         transform: translateX(-50%);
       }
 

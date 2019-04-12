@@ -44,20 +44,45 @@ var Main = (function($) {
 
   function _backgroundGrid() {
     var beat = 24;
+    var stagger = false;
 
     $('.background-grid').each(function() {
       var $inner = $(this).find('.-inner');
       var columns = Math.floor($inner.outerWidth() / beat);
       var rows = Math.floor($inner.outerHeight() / beat);
 
-      $inner.append('<div class="grid-columns"></div><div class="grid-rows"></div>');
-
-      for (var c = 0; c <= columns; c++) {
+      function layColumns(c) {
         $inner.find('.grid-columns').append('<div class="grid-column" style="left:'+ beat*c +'px;"></div>');
       }
 
-      for (var r = 0; r <= rows; r++) {
+      function layRows(r) {
         $inner.find('.grid-rows').append('<div class="grid-row" style="top: '+ beat*r +'px;"></div>');
+      }
+
+      $inner.append('<div class="grid-columns"></div><div class="grid-rows"></div>');
+
+      if (stagger === true) {
+        for (var c = 0; c <= columns; c++) {
+          (function (c) {
+            setTimeout(function () {
+              layColumns(c);
+            }, .25 * c * 100);
+          })(c);
+        }
+        for (var r = 0; r <= rows; r++) {
+          (function (r) {
+            setTimeout(function () {
+              layRows(r);
+            }, .25 * r * 100);
+          })(r);
+        }
+      } else {
+        for (var c = 0; c <= columns; c++) {
+          layColumns(c);
+        }
+        for (var r = 0; r <= rows; r++) {
+          layRows(r);
+        }
       }
     });
   }

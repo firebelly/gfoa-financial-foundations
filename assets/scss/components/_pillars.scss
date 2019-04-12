@@ -1,9 +1,6 @@
 // Pillars
 
 .pillar {
-  @include media-md {
-    padding: #{$beat * 4} 0;
-  }
 
   header {
     .pillar-label {
@@ -48,6 +45,29 @@
     }
   }
 
+  @include media-md {
+    padding: #{$beat * 4} 0;
+
+    header {
+      margin-left: $beat * 6;
+    }
+
+    .pillar-content {
+      float: right;
+      width: columns(18);
+    }
+
+    &:nth-of-type(even) {
+      header {
+        width: 50%;
+        margin-left: 50%;
+      }
+      .pillar-content {
+        float: none;
+      }
+    }
+  }
+
   // Individual Pillars
   &.pillar-1 {
     @include media-md {
@@ -67,6 +87,9 @@
       }
       .pillar-title {
         @include boxed-text(2, black);
+      }
+      .pillar-tagline span {
+        line-height: 1.1;
       }
     }
     .pillar-content {
@@ -101,6 +124,9 @@
       }
       .pillar-title {
         @include boxed-text(2, black);
+      }
+      .pillar-tagline span {
+        line-height: 1.1;
       }
     }
     .pillar-content {
