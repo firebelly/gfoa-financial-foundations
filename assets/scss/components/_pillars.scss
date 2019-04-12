@@ -28,6 +28,7 @@
 
   .pillar-content {
     padding: $beat;
+    position: relative;
     @include outlined-box;
 
     h3 {
@@ -41,7 +42,21 @@
     }
 
     @include media-md {
+      padding-right: 0;
       margin-top: $beat * 7;
+
+      &::before {
+        top: 0;
+        left: 100%;
+        z-index: 1;
+        content: '';
+        bottom: -1px;
+        width: 6000px;
+        position: absolute;
+        background-color: inherit;
+        border-top: 1px solid color(white);
+        border-bottom: 1px solid color(white);
+      }
     }
   }
 
@@ -59,11 +74,18 @@
 
     &:nth-of-type(even) {
       header {
-        width: 50%;
-        margin-left: 50%;
+        width: columns(17);
+        margin-left: columns(24);
       }
       .pillar-content {
         float: none;
+        padding-right: $beat;
+        &::before {
+          left: auto;
+          right: 100%;
+          transform: translateX(1px);
+          border-color: color(black);
+        }
       }
     }
   }
