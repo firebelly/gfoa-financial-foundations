@@ -1,0 +1,225 @@
+// Sections
+
+.section {
+  position: relative;
+  padding: #{$beat * 3} 0;
+
+  @include media-md {
+    padding: #{$beat * 6} 0;
+  }
+
+  // Intro Section
+  &.section-intro {
+    .logo {
+      .logo-mark {
+        border: 1px solid color(white);
+        svg {
+          fill: color(black);
+        }
+      }
+    }
+
+    h2 {
+      margin: 0;
+      @include boxed-text(3);
+    }
+
+    .start {
+      z-index: 1;
+      padding: 0;
+      cursor: pointer;
+      appearance: none;
+      width: $beat * 5;
+      left: $padding-md;
+      position: absolute;
+      color: color(white);
+      height: $beat * 2.5;
+      background: color(green);
+      bottom: #{(-$beat * 9) - 1px};
+      border: 1px solid color(black);
+      border-bottom: transparent;
+      border-radius: #{$beat * 2.5} #{$beat * 2.5} 0 0;
+
+      span {
+        left: 50%;
+        @include h5;
+        @include smooth;
+        font-style: normal;
+        position: absolute;
+        bottom: #{$beat - 5px};
+        @include boxed-text(1);
+        transform: translateX(-50%);
+      }
+
+      svg {
+        top: 100%;
+        left: 50%;
+        width: 10px;
+        position: absolute;
+        fill: color(offwhite);
+        transform: translateX(-50%);
+      }
+    }
+
+    @include media-md {
+      padding: #{$beat * 2} 0 0;
+
+      .logo {
+        margin-left: -$beat * 4;
+      }
+
+      .background-grid-container {
+        padding: #{$beat * 5} 0 #{$beat * 9};
+      }
+    }
+  }
+
+  // 5 Pillars Section
+  &.section-5-pillars {
+    border-top: 1px solid color(black);
+    border-bottom: 1px solid color(black);
+
+    @include media-md {
+      padding: #{$beat * 13} 0;
+    }
+  }
+
+  // Next Steps
+  &.section-next-step {
+    .section-title {
+      @include h2;
+      color: color(blue);
+      @include boxed-text(2);
+    }
+
+    .next-steps {
+      margin-bottom: $beat * 3;
+
+      > .sitewrapper > .grid:first-of-type {
+        margin-bottom: $beat;
+      }
+
+      .next-step {
+        padding: 0 $beat $beat 0;
+        @include outlined-box(white);
+        background-color: color(offwhite);
+
+        @include media-md {
+          width: columns(24);
+          flex-basis: columns(24);
+
+          &.-bottom {
+            width: columns(23);
+            min-height: $beat * 12;
+            flex-basis: columns(23);
+          }
+        }
+      }
+
+      h3 {
+        margin: 0;
+        @include h3;
+        color: color(blue);
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .cta {
+        display: flex;
+        position: relative;
+
+        svg {
+          left: 0;
+          width: 210px;
+          height: 96px;
+          top: $beat / 2;
+          fill: color(black);
+          position: absolute;
+
+          &.-right {
+            left: auto;
+            right: $beat;
+            transform: scaleX(-1);
+          }
+        }
+
+        a {
+          margin: auto;
+        }
+
+        @include media-md {
+          width: columns(17);
+          flex-basis: columns(17);
+
+          a {
+            width: $beat * 9;
+            padding-left: $beat;
+            padding-right: $beat;
+          }
+
+          &.-bottom {
+            width: columns(18);
+            flex-basis: columns(18);
+            padding-left: $beat * 4;
+
+            a {
+              margin: auto 0;
+            }
+          }
+        }
+      }
+    }
+
+    .events {
+      .section-title {
+        @include h3;
+        margin: 0 0 $beat;
+        @include boxed-text(2);
+        span {
+          line-height: 1.2;
+        }
+      }
+
+      .event {
+        display: flex;
+        padding: $beat;
+        @include outlined-box;
+        justify-content: space-between;
+        background-color: color(offwhite);
+
+        .event-date {
+          margin: 0;
+          @include p;
+          font-style: italic;
+        }
+
+        .event-title {
+          margin: 0;
+          @include p;
+          font-weight: 700;
+          color: color(blue);
+        }
+
+        .event-venue {
+          h4,
+          .address {
+            margin: 0;
+            @include h5;
+          }
+        }
+
+        .event-link {
+          margin: 0;
+        }
+      }
+    }
+
+    @include media-md {
+      .next-steps {
+        margin-bottom: $beat * 6;
+      }
+    }
+  }
+}

@@ -107,7 +107,7 @@
 @mixin h5 {
   @include font-copy;
   font-style: italic;
-  @include paragraph-style(17, 24, .01em, normal);
+  @include paragraph-style(18, 24, .01em, normal);
 }
 .h5 {
   @include h5;
@@ -119,4 +119,12 @@
 }
 .p {
   @include p;
+}
+
+@mixin p2 {
+  @include font-copy;
+  @include paragraph-style(18, 24, .01em, normal);
+}
+.p2 {
+  @include p2;
 }

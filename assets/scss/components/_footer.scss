@@ -18,8 +18,14 @@
     }
 
     @include media-md {
-      margin-left: -$beat * 4;
+      margin: 0 0 #{$beat * 3} #{-$beat * 4};
     }
+  }
+
+  .address,
+  .phone {
+    margin: 0;
+    @include p2;
   }
 
   .gfoa-link {
