@@ -1,6 +1,7 @@
 // Buttons
 
 .button {
+  @extend .button-reset;
   @include h5;
   height: $beat * 2;
   position: relative;
@@ -11,12 +12,17 @@
   display: inline-block;
   line-height: $beat * 2;
   border: 1px solid color(black);
-  box-shadow: 0 6px 0 color(black);
+  box-shadow: 0 4px 0 color(black);
   background-color: color(offwhite);
 
+  &:hover {
+    top: -2px;
+    box-shadow: 0 6px 0 color(black);
+  }
+
   &:active {
-    top: 3px;
-    box-shadow:  0 3px 0 color(black);
+    top: 4px;
+    box-shadow: none;
   }
 
   @each $color, $value in $colors {
@@ -29,6 +35,73 @@
           color: color(offwhite);
         }
       }
+    }
+  }
+
+  &.expand {
+    padding: 0;
+    width: 47px;
+    height: 47px;
+    border: none;
+    box-shadow: none;
+    border-radius: 50%;
+    background-color: color(black);
+
+    svg {
+      top: 50%;
+      left: 50%;
+      width: 24px;
+      height: 12px;
+      position: absolute;
+      fill: color(offwhite);
+      transform: translate(-50%,-50%);
+    }
+  }
+}
+
+// Close Button
+button.close {
+  cursor: pointer;
+  @extend .button-reset;
+
+  .close-x {
+    width: 13px;
+    height: 14px;
+    display: block;
+    position: relative;
+    &::before,
+    &::after {
+      top: 50%;
+      left: -2px;
+      width: 17px;
+      height: 1px;
+      content: '';
+      position: absolute;
+      transform-origin: center;
+      background-color: color(offwhite);
+    }
+    &::before {
+      transform: rotate(45deg);
+    }
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+// Pillar expand
+.pillar-expand {
+  @include p;
+  cursor: pointer;
+  font-style: italic;
+  @extend .button-reset;
+  .button {
+    margin-right: $beat;
+    vertical-align: middle;
+  }
+  &:active {
+    .button {
+      top: 3px;
     }
   }
 }

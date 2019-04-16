@@ -22,6 +22,30 @@ a {
 	color: inherit;
 }
 
+.inline-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  &::after {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    height: 1px;
+    content: '';
+    position: absolute;
+    border-bottom: 1px solid;
+    transition: border-width .2s ease-out, opacity .2s ease-out;
+  }
+
+  &:hover {
+    &::after {
+      opacity: .5;
+      border-bottom-width: 8px;
+    }
+  }
+}
+
 img {
   height: auto;
 	max-width: 100%;
@@ -41,16 +65,44 @@ img {
 
 // Flashbar at the top of the page
 .flashbar {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   padding: 10px;
   @include smooth;
+  position: fixed;
   font-style: italic;
   text-align: center;
   color: color(offwhite);
+  transform: translateY(-100%);
   background-color: color(black);
+  transition: transform .25s ease-out;
+
+  &.-active {
+    transform: translateY(0);
+  }
 
   p {
     margin: 0;
     @include h5;
+  }
+
+  a {
+    @extend .inline-link;
+  }
+
+  .close {
+    top: 50%;
+    right: 10px;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    transform: translateY(-50%);
+
+    @include media-md {
+      right: $padding-md;
+    }
   }
 }
 

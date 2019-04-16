@@ -10,6 +10,8 @@
 
   // Intro Section
   &.section-intro {
+    height: 100vh;
+
     .logo {
       .logo-mark {
         border: 1px solid color(white);
@@ -63,10 +65,6 @@
     @include media-md {
       padding: #{$beat * 2} 0 0;
 
-      .logo {
-        margin-left: -$beat * 4;
-      }
-
       .background-grid-container {
         padding: #{$beat * 5} 0 #{$beat * 9};
       }
@@ -80,6 +78,27 @@
 
     @include media-md {
       padding: #{$beat * 13} 0;
+
+      .scroll-art {
+        bottom: 0;
+        width: 100%;
+        position: absolute;
+      }
+
+      #section-one-art {
+        bottom: -1px;
+        float: right;
+        width: 216px;
+        height: 596px;
+        position: relative;
+
+        .radial-one {
+          animation: flash 3s infinite;
+        }
+        .radial-two {
+          animation: flash 3s infinite .5s;
+        }
+      }
     }
   }
 

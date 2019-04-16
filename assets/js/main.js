@@ -1,12 +1,17 @@
 /*jshint latedef:false*/
 
 //=include "../bower_components/jquery/dist/jquery.js"
+//=include "../bower_components/velocity/velocity.js"
+//=include "../bower_components/scrollmagic/scrollmagic/minified/ScrollMagic.min.js"
+//=include "../bower_components/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js"
+//=include "../../node_modules/gsap/src/minified/TweenMax.min.js"
 
 var Main = (function($) {
 
   var $document,
       $window,
       $body,
+      $flashBar,
       breakpointIndicatorString,
       breakpoint_xl,
       breakpoint_nav,
@@ -23,6 +28,7 @@ var Main = (function($) {
     $document = $(document);
     $window = $(window);
     $body = $('body');
+    $flashBar = $('#flashbar');
 
     // Set screen size vars
     _resize();
@@ -31,7 +37,10 @@ var Main = (function($) {
     transitionElements = [];
 
     // Init functions
+    _initFlashBar();
     _backgroundGrid();
+    _initExpandingPillars();
+    _initScrollMagic();
 
     // Esc handlers
     $(document).keyup(function(e) {
@@ -41,6 +50,16 @@ var Main = (function($) {
     });
 
   } // end init()
+
+  function _initFlashBar() {
+    setTimeout(function() {
+      $flashBar.addClass('-active');
+    }, 500);
+
+    $('#flashbar-close').on('click', function() {
+      $flashBar.removeClass('-active');
+    });
+  }
 
   function _backgroundGrid() {
     var beat = 24;
@@ -61,30 +80,111 @@ var Main = (function($) {
 
       $inner.append('<div class="grid-columns"></div><div class="grid-rows"></div>');
 
-      if (stagger === true) {
-        for (var c = 0; c <= columns; c++) {
-          (function (c) {
+      for (var c = 0; c <= columns; c++) {
+        if (stagger === true) {
+          (function(c) {
             setTimeout(function () {
               layColumns(c);
-            }, .25 * c * 100);
+            }, 0.25 * c * 100);
           })(c);
-        }
-        for (var r = 0; r <= rows; r++) {
-          (function (r) {
-            setTimeout(function () {
-              layRows(r);
-            }, .25 * r * 100);
-          })(r);
-        }
-      } else {
-        for (var c = 0; c <= columns; c++) {
+        } else {
           layColumns(c);
         }
-        for (var r = 0; r <= rows; r++) {
+      }
+
+      for (var r = 0; r <= rows; r++) {
+        if (stagger === true) {
+          (function(r) {
+            setTimeout(function () {
+              layRows(r);
+            }, 0.25 * r * 100);
+          })(r);
+        } else {
           layRows(r);
         }
       }
     });
+  }
+
+  function _initExpandingPillars() {
+    _hidePillars();
+
+    $('.pillar-expand').on('click', function() {
+        var targetPillar = $(this).attr('data-targetPillar');
+        var $pillar = $('#'+targetPillar);
+
+        if ($pillar.is('.-active')) {
+          $(this).removeClass('-active');
+          _collapsePillar($pillar);
+        } else {
+          $(this).addClass('-active');
+          _expandPillar($pillar);
+        }
+    });
+  }
+
+  function _deactivatePillar($pillar) {
+    $pillar.removeClass('-active');
+  }
+
+  function _activatePillar($pillar) {
+    $pillar.addClass('-active');
+  }
+
+  function _collapsePillar($pillar) {
+    _deactivatePillar($pillar);
+    $pillar.find('.expandable-pillar-content').velocity({
+      opacity: 0,
+      easing: 'easeout',
+      duration: 250
+    }).velocity('slideUp', {
+      easing: 'easeOutQuart',
+      duration: 250
+    });
+  }
+
+  function _expandPillar($pillar) {
+    _activatePillar($pillar);
+    $pillar.find('.expandable-pillar-content').velocity('slideDown', {
+      easing: 'easeOutQuart',
+      duration: 250
+    }).velocity({
+      opacity: 1,
+      easing: 'easeOut',
+      duration: 250
+    });
+  }
+
+  function _hidePillars() {
+    _deactivatePillar($('.expandable-pillar'));
+    $('.expandable-pillar-content').hide();
+  }
+
+  function _initScrollMagic() {
+    function pathPrepare ($el) {
+      var lineLength = $el[0].getTotalLength();
+      $el.css("stroke-dasharray", lineLength);
+      $el.css("stroke-dashoffset", lineLength);
+    }
+
+    var $line = $("path#scroll-line");
+    var $dot = $("circle#scroll-dot");
+
+    // prepare SVG
+    pathPrepare($line);
+
+    // init controller
+    var controller = new ScrollMagic.Controller();
+
+    // build tween
+    var tween = new TimelineMax()
+      .add(TweenMax.to($dot, 0.005, {attr:{r:12}, ease:Linear.easeNone}))
+      .add(TweenMax.to($line, 0.01, {strokeDashoffset: 0, ease:Linear.easeNone}));
+
+    // build scene
+    var scene = new ScrollMagic.Scene({triggerElement: "#section-one-art", duration: 200, tweenChanges: true})
+            .setTween(tween)
+            .addTo(controller);
   }
 
   // Disabling transitions on certain elements on resize

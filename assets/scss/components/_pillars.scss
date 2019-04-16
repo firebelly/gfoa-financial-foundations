@@ -2,6 +2,44 @@
 
 .pillar {
 
+  &.-light {
+    @include media-md {
+      header {
+        margin-left: $beat * 6;
+      }
+
+      .pillar-content {
+        float: right;
+        padding-left: $beat;
+        width: columns(18);
+
+        &::before {
+          border-color: color(white);
+        }
+      }
+    }
+  }
+  &.-dark {
+    @include media-md {
+      header {
+        width: columns(17);
+        margin-left: columns(24);
+      }
+
+      .pillar-content {
+        float: none;
+        padding-right: $beat;
+
+        &::before {
+          left: auto;
+          right: 100%;
+          border-color: color(black);
+          transform: translateX(1px);;
+        }
+      }
+    }
+  }
+
   header {
     .pillar-label {
       margin: 0;
@@ -27,8 +65,9 @@
   }
 
   .pillar-content {
-    padding: $beat;
     position: relative;
+    padding-top: $beat;
+    padding-bottom: $beat;
     @include outlined-box;
 
     h3 {
@@ -39,6 +78,10 @@
     p {
       @include p;
       margin: 0 0 $beat * 2;
+
+      a {
+        @extend .inline-link;
+      }
     }
 
     @include media-md {
@@ -53,9 +96,9 @@
         bottom: -1px;
         width: 6000px;
         position: absolute;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
         background-color: inherit;
-        border-top: 1px solid color(white);
-        border-bottom: 1px solid color(white);
       }
     }
   }
@@ -63,36 +106,15 @@
   @include media-md {
     padding: #{$beat * 4} 0;
 
-    header {
-      margin-left: $beat * 6;
-    }
-
     .pillar-content {
-      float: right;
       width: columns(18);
-    }
-
-    &:nth-of-type(even) {
-      header {
-        width: columns(17);
-        margin-left: columns(24);
-      }
-      .pillar-content {
-        float: none;
-        padding-right: $beat;
-        &::before {
-          left: auto;
-          right: 100%;
-          transform: translateX(1px);
-          border-color: color(black);
-        }
-      }
     }
   }
 
   // Individual Pillars
   &.pillar-1 {
     @include media-md {
+      padding-bottom: $beat * 2;
       .background-grid {
         top: $beat * 12;
       }
@@ -171,6 +193,47 @@
       .background-grid {
         top: $beat * 13;
       }
+    }
+  }
+}
+
+// Expandable Pillars
+.expandable-pillar {
+  position: relative;
+  color: color(white);
+  background-color: color(black);
+
+  &-content {
+    opacity: 0;
+    padding: #{$beat * 3} 0;
+
+    @include media-md {
+      padding: #{$beat * 6} 0;
+    }
+  }
+
+  h2 {
+    margin: 0;
+    @include h3;
+  }
+
+  &-images {
+    img {
+      display: block;
+      outline: 1px solid color(white);
+    }
+  }
+
+  @include media-md {
+    .expandable-pillar-text {
+      width: columns(23);
+      padding-right: $beat;
+      flex-basis: columns(23);
+    }
+
+    .expandable-pillar-images {
+      width: columns(18);
+      flex-basis: columns(18);
     }
   }
 }
