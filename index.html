@@ -51,12 +51,12 @@
           <div class="background-grid"><div class="-inner"></div></div>
           <div class="sitewrapper">
             <h2 class="h1 color-blue bt-bg-offwhite"><span>Financial</span> <span>Foundations</span> <span>for Thriving</span> <span>Communities</span></h2>
-            <button class="start"><span>Start</span><svg class="icon start-arrow" aria-hidden="true" role="presentation"><use xlink:href="#start-arrow"/></svg></button>
+            <button id="start-button" class="start"><span>Start</span><svg class="icon start-arrow" aria-hidden="true" role="presentation"><use xlink:href="#start-arrow"/></svg></button>
           </div>
         </div>
       </section>
 
-      <section class="section-5-pillars section background-green">
+      <section id="five-pillars" class="section-5-pillars section background-green">
         <div class="sitewrapper grid">
           <div class="med-two-thirds">
             <h2 class="h2 color-white">5 Pillars<br> of Financial<br> Success</h2>
@@ -66,6 +66,7 @@
         <div class="scroll-art">
           <div class="sitewrapper">
             <svg id="section-one-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 217 596.3"><style>.st0{fill:none;stroke:#fff;stroke-miterlimit:10}.st1{fill:#fff}.st2,.st3{fill:none;stroke:#fff;stroke-miterlimit:10}.st2{stroke-width:10}.st3{stroke-linecap:round}</style><path class="radial-one st0" d="M96.5 215.8c-53.9-6-96-51.8-96-107.3C.5 48.9 48.9.5 108.5.5s108 48.4 108 108c0 55.5-42.1 101.4-96 107.3"/><circle class="st1" cx="108.5" cy="108.5" r="12"/><path class="st2" d="M108.5 112.3v484"/><path id="scroll-line" d="M108.5 112.3v484" stroke-dasharray="484" stroke-dashoffset="484" fill="none" stroke="#393839" stroke-miterlimit="10" stroke-width="10"/><path class="radial-two st3" d="M120.5 167.3c27.4-5.6 48-29.8 48-58.8 0-33.1-26.9-60-60-60s-60 26.9-60 60c0 29 20.6 53.2 48 58.8"/><circle id="scroll-dot" fill="#393839" cx="108.5" cy="108.5" r="0"/></svg>
+            <p>Begin your journey</p>
           </div>
         </div>
       </section>
@@ -84,7 +85,12 @@
             <p>The only thing better than an inspiring vision is an inspiring shared vision. Turn stakeholders into co-creators as you define the long-term vision.</p>
             <h3 class="color-blue">Leadership Strategies #2:<br> Balance Long-Term Goals with Short-Term Needs</h3>
             <p>In all things, seek balance. Advocate for both the big picture and day-to-day needs. Break long-term goals in shorter-term milestones to maintain momentum.</p>
-            <button class="pillar-expand" data-targetPillar="city-of-portland" ><span class="button expand" aria-hidden="true"><svg class="icon icon-chevron" aria-hidden="true" role="presentation"><use xlink:href="#icon-chevron"/></svg></span> See this pillar in action</button>
+            <div class="pillar-toggle">
+              <button class="pillar-expand" data-targetPillar="city-of-portland"><span class="button expand" aria-hidden="true"><svg class="icon icon-chevron" aria-hidden="true" role="presentation"><use xlink:href="#icon-chevron"/></svg></span> See this pillar in action</button>
+              <div class="pillar-close-container">
+                <button class="pillar-close" data-targetPillar="city-of-portland"><span class="button close" aria-hidden="true"><span class="close-x"></span></span> Close</button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -139,6 +145,30 @@
             <p>Give citizens a seat at the table. They’re more likely to support decisions when they have a say in how public resources are used. Prioritize public feedback.</p>
             <h3 class="color-blue">Institutional Design Principles #2: Networked Enterprises.</h3>
             <p>We’re stronger together. Share services across local governments to save costs. Build collaborative, cross-sector networks to pool resources for addressing community challenges.</p>
+            <div class="pillar-toggle">
+              <button class="pillar-expand" data-targetPillar="city-of-pittsburgh"><span class="button expand" aria-hidden="true"><svg class="icon icon-chevron" aria-hidden="true" role="presentation"><use xlink:href="#icon-chevron"/></svg></span> See this pillar in action</button>
+              <div class="pillar-close-container">
+                <button class="pillar-close" data-targetPillar="city-of-pittsburgh"><span class="button close" aria-hidden="true"><span class="close-x"></span></span> Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="city-of-pittsburgh" class="expandable-pillar">
+        <div class="expandable-pillar-content">
+          <div class="sitewrapper grid">
+            <div class="expandable-pillar-text">
+              <h2>City of Pittsburgh, Pennsylvania</h2>
+              <p>Sometimes, a local government will find that residents and businesses are leaving the community, steadily eroding its financial foundation. Savvy local leaders will examine the reasons people leave and work with others to form an effective response. One of the best examples of precisely this approach: Pittsburgh, Pennsylvania.</p>
+              <p>After experiencing population loss for decades, Pittsburgh leaders—representing government, philanthropy, academia, and business— worked together to reverse its fortunes. They coalesced around and committed to a forward-looking and inspiring vision for the city: to become a leader in 21st century industries. Pittsburgh has since become a hub for the robotics and automation industries.</p>
+              <p>They started by leveraging local strengths—in this case, local universities that specialize in robotics like Carnegie Mellon and the University of Pittsburgh. Of course, not everyone can be a leader in robotics; precise recovery strategies need to be tailored to the context of a local government. Like Pittsburgh, every community has its unique strengths. The question is how to use them to build a long-term vision and plan.</p>
+
+            </div>
+            <div class="expandable-pillar-images">
+              <img src="assets/dist/images/portland-1_zack-spear-25262-unsplash.jpg" alt="Portland Oregon">
+              <img src="assets/dist/images/portland-2_elena-kuchko-1135472-unsplash.jpg" alt="Portland Oregon">
+            </div>
           </div>
         </div>
       </section>
@@ -169,17 +199,17 @@
           <div class="grid">
             <header class="med-one-half">
               <h3 class="pillar-label bt-bg-offwhite"><span>Pillar 5</span></h3>
-              <h2 class="pillar-title bt-bg-offwhite"><span>Treat</span> <span>Everyone Fairly</span></h2>
+              <h2 class="pillar-title color-blue bt-bg-offwhite"><span>Treat</span> <span>Everyone Fairly</span></h2>
               <p class="pillar-tagline bt-bg-offwhite"><span>Create the conditions</span> <span>for cooperation.</span></p>
             </header>
           </div>
 
           <div class="pillar-content background-offwhite">
-            <h3>Institutional Design Principles #6:<br> Proportional Equivalence Between Benefits & Cost </h3>
+            <h3 class="color-blue">Institutional Design Principles #6:<br> Proportional Equivalence Between Benefits & Cost </h3>
             <p>People must get what they pay for <strong>and</strong> pay for what they get. Be proactive— make sure citizens know what they stand to gain for their tax dollar.</p>
-            <h3>Institutional Design Principles #7:<br> Conflict-Resolution Mechanisms</h3>
+            <h3 class="color-blue">Institutional Design Principles #7:<br> Conflict-Resolution Mechanisms</h3>
             <p>We can’t please everyone all the time. Disputes around financial decisions will happen. Anticipate that. Prevent destructive conflict. Promote constructive debate.</p>
-            <h3>Institutional Design Principles #8:<Br> Minimum Recognition of Rights</h3>
+            <h3 class="color-blue">Institutional Design Principles #8:<Br> Minimum Recognition of Rights</h3>
             <p>Local governments must have autonomy. Use collective decision-making to develop policies and procedures for protecting local choices and addressing unfunded mandates and grants.</p>
           </div>
         </div>

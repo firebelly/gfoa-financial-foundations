@@ -10,7 +10,6 @@
 
   // Intro Section
   &.section-intro {
-    height: 100vh;
 
     .logo {
       .logo-mark {
@@ -63,7 +62,7 @@
     }
 
     @include media-md {
-      padding: #{$beat * 2} 0 0;
+      padding: #{$beat * 3} 0 0;
 
       .background-grid-container {
         padding: #{$beat * 5} 0 #{$beat * 9};
@@ -83,6 +82,17 @@
         bottom: 0;
         width: 100%;
         position: absolute;
+
+        p {
+          margin: 0;
+          @include p2;
+          right: 231px;
+          bottom: 210px;
+          position: absolute;
+          color: color(white);
+          transform: rotate(90deg);
+          transform-origin: bottom right;
+        }
       }
 
       #section-one-art {

@@ -1,6 +1,7 @@
 // Pillars
 
 .pillar {
+  overflow: hidden;
 
   &.-light {
     @include media-md {
@@ -81,6 +82,28 @@
 
       a {
         @extend .inline-link;
+      }
+    }
+
+    .pillar-toggle {
+      .pillar-close-container {
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: $beat * 6;
+        bottom: -$beat * 2;
+        position: absolute;
+        color: color(offwhite);
+        transform: translateY(100%);
+        background-color: color(black);
+        transition: transform .2s ease-out;
+        padding: $beat $beat #{$beat * 2} $beat;
+      }
+
+      &.pillar-open {
+        .pillar-close-container {
+          transform: none;
+        }
       }
     }
 

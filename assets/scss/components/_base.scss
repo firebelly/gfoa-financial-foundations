@@ -23,6 +23,7 @@ a {
 }
 
 .inline-link {
+  z-index: 1;
   position: relative;
   display: inline-block;
   text-decoration: none;
@@ -31,17 +32,18 @@ a {
     right: 0;
     bottom: 0;
     opacity: 1;
+    z-index: -1;
     height: 1px;
     content: '';
     position: absolute;
     border-bottom: 1px solid;
-    transition: border-width .2s ease-out, opacity .2s ease-out;
+    transition: border .2s ease-out;
   }
 
   &:hover {
     &::after {
-      opacity: .5;
       border-bottom-width: 8px;
+      border-color: color(gray);
     }
   }
 }
@@ -171,6 +173,7 @@ img {
 
 .logo {
   @include p2;
+  margin: 0 0 $beat;
   @include clearfix;
   a {
     display: inline-block;

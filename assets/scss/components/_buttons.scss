@@ -38,7 +38,8 @@
     }
   }
 
-  &.expand {
+  &.expand,
+  &.close {
     padding: 0;
     width: 47px;
     height: 47px;
@@ -56,6 +57,39 @@
       fill: color(offwhite);
       transform: translate(-50%,-50%);
     }
+
+    .close-x {
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+// Close x
+.close-x {
+  width: 18px;
+  height: 18px;
+  display: block;
+  position: relative;
+  &::before,
+  &::after {
+    top: 50%;
+    left: -3px;
+    width: 24px;
+    height: 1px;
+    content: '';
+    position: absolute;
+    transform-origin: center;
+    background-color: color(offwhite);
+    transition: background-color .2s ease-out;
+  }
+  &::before {
+    transform: rotate(45deg);
+  }
+  &::after {
+    transform: rotate(-45deg);
   }
 }
 
@@ -64,33 +98,20 @@ button.close {
   cursor: pointer;
   @extend .button-reset;
 
-  .close-x {
-    width: 13px;
-    height: 14px;
-    display: block;
-    position: relative;
-    &::before,
-    &::after {
-      top: 50%;
-      left: -2px;
-      width: 17px;
-      height: 1px;
-      content: '';
-      position: absolute;
-      transform-origin: center;
-      background-color: color(offwhite);
-    }
-    &::before {
-      transform: rotate(45deg);
-    }
-    &::after {
-      transform: rotate(-45deg);
+  &:hover,
+  &:focus {
+    .close-x {
+      &::before,
+      &::after {
+        background-color: color(gray);
+      }
     }
   }
 }
 
-// Pillar expand
-.pillar-expand {
+// Pillar expand/close
+.pillar-expand,
+.pillar-close {
   @include p;
   cursor: pointer;
   font-style: italic;
@@ -99,9 +120,18 @@ button.close {
     margin-right: $beat;
     vertical-align: middle;
   }
-  &:active {
-    .button {
-      top: 3px;
+}
+
+// Pillar Close
+.pillar-close {
+  color: color(offwhite);
+  .button.close {
+    background-color: color(offwhite);
+    .close-x {
+      &::before,
+      &::after {
+        background-color: color(black);
+      }
     }
   }
 }

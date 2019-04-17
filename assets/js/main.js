@@ -12,6 +12,7 @@ var Main = (function($) {
       $window,
       $body,
       $flashBar,
+      $startButton,
       breakpointIndicatorString,
       breakpoint_xl,
       breakpoint_nav,
@@ -29,6 +30,7 @@ var Main = (function($) {
     $window = $(window);
     $body = $('body');
     $flashBar = $('#flashbar');
+    $startButton = $('#start-button');
 
     // Set screen size vars
     _resize();
@@ -38,6 +40,7 @@ var Main = (function($) {
 
     // Init functions
     _initFlashBar();
+    _initStartButton();
     _backgroundGrid();
     _initExpandingPillars();
     _initScrollMagic();
@@ -45,7 +48,9 @@ var Main = (function($) {
     // Esc handlers
     $(document).keyup(function(e) {
       if (e.keyCode === 27) {
-
+        if ($('.expandable-pillar.-active').length) {
+          _collapsePillar($('.expandable-pillar.-active'));
+        }
       }
     });
 
@@ -58,6 +63,18 @@ var Main = (function($) {
 
     $('#flashbar-close').on('click', function() {
       $flashBar.removeClass('-active');
+    });
+  }
+
+  function _initStartButton() {
+    $startButton.on('click', function() {
+      isAnimating = true;
+      $('#five-pillars').velocity('scroll', {
+        duration: 500,
+        complete: function(elements) {
+          isAnimating = false;
+        }
+      }, "easeOutSine");
     });
   }
 
@@ -109,17 +126,22 @@ var Main = (function($) {
   function _initExpandingPillars() {
     _hidePillars();
 
-    $('.pillar-expand').on('click', function() {
-        var targetPillar = $(this).attr('data-targetPillar');
-        var $pillar = $('#'+targetPillar);
+    $('.pillar-toggle').on('click', 'button', function(e) {
+      var targetPillar = $(this).attr('data-targetPillar');
+      var $pillar = $('#'+targetPillar);
 
-        if ($pillar.is('.-active')) {
-          $(this).removeClass('-active');
-          _collapsePillar($pillar);
-        } else {
-          $(this).addClass('-active');
-          _expandPillar($pillar);
-        }
+      if ($(this).is('.pillar-expand')) {
+        _expandPillar($pillar);
+      } else {
+        _collapsePillar($pillar);
+      }
+    });
+
+    $('.pillar-close').on('click', function() {
+      var targetPillar = $(this).attr('data-targetPillar');
+      var $pillar = $('#'+targetPillar);
+
+      _collapsePillar($pillar);
     });
   }
 
@@ -133,6 +155,7 @@ var Main = (function($) {
 
   function _collapsePillar($pillar) {
     _deactivatePillar($pillar);
+    $pillar.prev('.pillar').find('.pillar-toggle').removeClass('pillar-open');
     $pillar.find('.expandable-pillar-content').velocity({
       opacity: 0,
       easing: 'easeout',
@@ -147,7 +170,10 @@ var Main = (function($) {
     _activatePillar($pillar);
     $pillar.find('.expandable-pillar-content').velocity('slideDown', {
       easing: 'easeOutQuart',
-      duration: 250
+      duration: 250,
+      complete: function(e) {
+        $pillar.prev('.pillar').find('.pillar-toggle').addClass('pillar-open');
+      }
     }).velocity({
       opacity: 1,
       easing: 'easeOut',
@@ -178,8 +204,8 @@ var Main = (function($) {
 
     // build tween
     var tween = new TimelineMax()
-      .add(TweenMax.to($dot, 0.005, {attr:{r:12}, ease:Linear.easeNone}))
-      .add(TweenMax.to($line, 0.01, {strokeDashoffset: 0, ease:Linear.easeNone}));
+      .add(TweenMax.to($dot, .1, {attr:{r:12}, ease:Linear.easeNone}))
+      .add(TweenMax.to($line, .1, {strokeDashoffset: 0, ease:Linear.easeNone}));
 
     // build scene
     var scene = new ScrollMagic.Scene({triggerElement: "#section-one-art", duration: 200, tweenChanges: true})
