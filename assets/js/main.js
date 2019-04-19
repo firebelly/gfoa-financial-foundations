@@ -126,9 +126,8 @@ var Main = (function($) {
   function _initExpandingPillars() {
     _hidePillars();
 
-    $('.pillar-toggle').on('click', 'button', function(e) {
-      var targetPillar = $(this).attr('data-targetPillar');
-      var $pillar = $('#'+targetPillar);
+    $('.pillar-toggle').on('click', function(e) {
+      var $pillar = $(this).closest('.pillar').find('.expandable-pillar');
 
       if ($(this).is('.pillar-expand')) {
         _expandPillar($pillar);
@@ -155,14 +154,24 @@ var Main = (function($) {
 
   function _collapsePillar($pillar) {
     _deactivatePillar($pillar);
-    $pillar.prev('.pillar').find('.pillar-toggle').removeClass('pillar-open');
-    $pillar.find('.expandable-pillar-content').velocity({
-      opacity: 0,
-      easing: 'easeout',
-      duration: 250
-    }).velocity('slideUp', {
-      easing: 'easeOutQuart',
-      duration: 250
+    $pillar.find('.pillar-close-container .-inner').velocity({
+      translateY: '0',
+      translateZ: '0'
+    },{
+      display: 'none',
+      duration: 100,
+      easing: 'easeOutQuart'
+    });
+    $pillar.find('.expandable-pillar-content > .sitewrapper').velocity({
+      opacity: 0
+      },{
+      duration: 250,
+      complete: function() {
+        $pillar.find('.expandable-pillar-content').velocity('slideUp', {
+          easing: 'easeOutQuart',
+          duration: 250
+        });
+      }
     });
   }
 
@@ -170,12 +179,23 @@ var Main = (function($) {
     _activatePillar($pillar);
     $pillar.find('.expandable-pillar-content').velocity('slideDown', {
       easing: 'easeOutQuart',
-      duration: 250,
-      complete: function(e) {
-        $pillar.prev('.pillar').find('.pillar-toggle').addClass('pillar-open');
+      duration: 350,
+      complete: function() {
+        $pillar.find('.expandable-pillar-content > .sitewrapper').velocity({
+          opacity: 1
+        },{
+          duration: 250
+        });
+        $pillar.find('.pillar-close-container .-inner').velocity({
+          translateY: '-100%',
+          translateZ: '0'
+        },{
+          display: 'block',
+          duration: 250,
+          easing: 'easeOutQuart'
+        });
       }
     }).velocity({
-      opacity: 1,
       easing: 'easeOut',
       duration: 250
     });

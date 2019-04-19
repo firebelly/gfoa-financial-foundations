@@ -85,28 +85,6 @@
       }
     }
 
-    .pillar-toggle {
-      .pillar-close-container {
-        left: 0;
-        z-index: 1;
-        width: 100%;
-        height: $beat * 6;
-        bottom: -$beat * 2;
-        position: absolute;
-        color: color(offwhite);
-        transform: translateY(100%);
-        background-color: color(black);
-        transition: transform .2s ease-out;
-        padding: $beat $beat #{$beat * 2} $beat;
-      }
-
-      &.pillar-open {
-        .pillar-close-container {
-          transform: none;
-        }
-      }
-    }
-
     @include media-md {
       padding-right: 0;
       margin-top: $beat * 7;
@@ -222,13 +200,41 @@
 
 // Expandable Pillars
 .expandable-pillar {
+  z-index: 2;
   position: relative;
   color: color(white);
-  background-color: color(black);
+
+  .pillar-close-container {
+    top: 0;
+    left: 50%;
+    z-index: -1;
+    width: 100%;
+    position: absolute;
+    transform: translateX(-50%);
+
+    .-inner {
+      display: none;
+      height: $beat * 4;
+      left: columns(23);
+      width: columns(18);
+      position: relative;
+      color: color(offwhite);
+      background-color: color(black);
+      padding: $beat $beat #{$beat * 2} $beat;
+      &.-left {
+        left: 0;
+      }
+    }
+
+  }
 
   &-content {
-    opacity: 0;
     padding: #{$beat * 3} 0;
+    background-color: color(black);
+
+    > .sitewrapper {
+      opacity: 0;
+    }
 
     @include media-md {
       padding: #{$beat * 6} 0;

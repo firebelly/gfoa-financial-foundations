@@ -75,6 +75,32 @@
     border-top: 1px solid color(black);
     border-bottom: 1px solid color(black);
 
+    h2 {
+      @include h1;
+      color: color(white);
+      @include boxed-text(3);
+      margin: 0 0 #{$beat * 2};
+    }
+
+    .section-content {
+      p {
+        margin-bottom: $beat * 2;
+      }
+    }
+
+    .scroll-art {
+      pointer-events: none;
+
+      p {
+        margin: 0;
+        @include p2;
+        position: absolute;
+        color: color(white);
+        transform: rotate(90deg);
+        transform-origin: bottom right;
+      }
+    }
+
     @include media-md {
       padding: #{$beat * 13} 0;
 
@@ -84,14 +110,8 @@
         position: absolute;
 
         p {
-          margin: 0;
-          @include p2;
           right: 231px;
           bottom: 210px;
-          position: absolute;
-          color: color(white);
-          transform: rotate(90deg);
-          transform-origin: bottom right;
         }
       }
 
