@@ -115,7 +115,7 @@
 
 @mixin p {
   @include font-copy;
-  @include paragraph-style(22, 32, .05em, normal);
+  @include paragraph-style(22, 30, 0, normal);
 }
 .p {
   @include p;

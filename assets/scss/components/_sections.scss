@@ -86,6 +86,10 @@
       p {
         margin-bottom: $beat * 2;
       }
+
+      .button {
+        padding-right: $beat;
+      }
     }
 
     .scroll-art {
@@ -102,7 +106,7 @@
     }
 
     @include media-md {
-      padding: #{$beat * 13} 0;
+      padding: #{$beat * 12} 0 #{$beat * 7};
 
       .scroll-art {
         bottom: 0;
@@ -135,38 +139,20 @@
   // Next Steps
   &.section-next-step {
     .section-title {
-      @include h2;
+      @include h1;
       color: color(blue);
-      @include boxed-text(2);
+      @include boxed-text(3);
     }
 
+    // Book/Next Steps
+    .book,
     .next-steps {
-      margin-bottom: $beat * 3;
-
-      > .sitewrapper > .grid:first-of-type {
-        margin-bottom: $beat;
-      }
-
-      .next-step {
-        padding: 0 $beat $beat 0;
-        @include outlined-box(white);
-        background-color: color(offwhite);
-
-        @include media-md {
-          width: columns(24);
-          flex-basis: columns(24);
-
-          &.-bottom {
-            width: columns(23);
-            min-height: $beat * 12;
-            flex-basis: columns(23);
-          }
-        }
-      }
-
       h3 {
         margin: 0;
+        z-index: 1;
         @include h3;
+        line-height: 30px;
+        position: relative;
         color: color(blue);
       }
 
@@ -174,32 +160,116 @@
         margin: 0;
       }
 
+      .next-step,
+      .text {
+        padding: 0 $beat $beat 0;
+        @include outlined-box(white);
+        background-color: color(offwhite);
+      }
+    }
+
+    // Book
+    .book {
+      h3 {
+        margin-bottom: 8px;
+      }
+
+      .-left {
+        padding-bottom: $beat * 2;
+      }
+
+      .text {
+        padding-left: 1px;
+        margin-bottom: $beat * 2;
+        padding-bottom: $beat * 2;
+        p {
+          margin-bottom: 10px;
+        }
+      }
+
+      .cta {
+        display: flex;
+        padding: 0 $beat;
+        justify-content: space-between;
+        .button {
+          width: 100%;
+          margin-right: $beat;
+          &:not(.download) {
+            padding-left: $beat;
+            padding-right: $beat;
+          }
+          + .button {
+            margin-right: 0;
+            margin-left: $beat;
+          }
+        }
+      }
+
+      @include media-md {
+        .-left {
+          width: columns(24);
+          flex-basis: columns(24);
+        }
+        .-right {
+          width: columns(17);
+          flex-basis: columns(17);
+          @include outlined-box(white);
+          background: url('../images/book.jpg') center;
+          background-size: cover;
+        }
+      }
+    }
+
+    // Next Steps
+    .next-steps {
+      margin-bottom: $beat * 3;
+
+      > .sitewrapper > .grid:first-of-type {
+        margin-bottom: $beat * 3;
+      }
+
+      .next-step {
+
+        @include media-md {
+          width: columns(23);
+          flex-basis: columns(23);
+
+          &.-bottom {
+            width: columns(23);
+            padding-right: 18px;
+            flex-basis: columns(23);
+            padding-bottom: $beat * 3;
+          }
+        }
+      }
+
       .cta {
         display: flex;
         position: relative;
+        padding: #{$beat * 3} #{$beat * 2};
 
         svg {
-          left: 0;
-          width: 210px;
-          height: 96px;
+          left: $beat;
+          width: 258px;
+          height: 37px;
           top: $beat / 2;
-          fill: color(black);
           position: absolute;
-
-          &.-right {
-            left: auto;
-            right: $beat;
-            transform: scaleX(-1);
+          #line {
+            fill: none;
+            stroke: color(black);
+          }
+          #arrowhead {
+            fill: color(black);
           }
         }
 
         a {
-          margin: auto;
+          margin: auto 0;
         }
 
         @include media-md {
-          width: columns(17);
-          flex-basis: columns(17);
+          width: columns(18);
+          flex-basis: columns(18);
 
           a {
             width: $beat * 9;
@@ -210,11 +280,8 @@
           &.-bottom {
             width: columns(18);
             flex-basis: columns(18);
-            padding-left: $beat * 4;
-
-            a {
-              margin: auto 0;
-            }
+            padding-right: $beat * 2;
+            justify-content: flex-end;
           }
         }
       }
@@ -262,11 +329,9 @@
           margin: 0;
         }
       }
-    }
 
-    @include media-md {
-      .next-steps {
-        margin-bottom: $beat * 6;
+      @include media-md {
+        margin: #{$beat * 7} 0;
       }
     }
   }

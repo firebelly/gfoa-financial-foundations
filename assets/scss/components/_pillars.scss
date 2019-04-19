@@ -11,8 +11,8 @@
 
       .pillar-content {
         float: right;
-        padding-left: $beat;
         width: columns(18);
+        padding-left: $beat;
 
         &::before {
           border-color: color(white);
@@ -35,7 +35,7 @@
           left: auto;
           right: 100%;
           border-color: color(black);
-          transform: translateX(1px);;
+          transform: translateX(1px);
         }
       }
     }
@@ -66,6 +66,7 @@
   }
 
   .pillar-content {
+    padding-left: 1px;
     position: relative;
     padding-top: $beat;
     padding-bottom: $beat;
@@ -216,13 +217,14 @@
       display: none;
       height: $beat * 4;
       left: columns(23);
-      width: columns(18);
+      width: columns(19);
       position: relative;
       color: color(offwhite);
       background-color: color(black);
       padding: $beat $beat #{$beat * 2} $beat;
       &.-left {
-        left: 0;
+        left: -$beat;
+        width: columns(19);
       }
     }
 
@@ -246,23 +248,48 @@
     @include h3;
   }
 
+  &-text {
+    padding-bottom: $beat;
+  }
+
   &-images {
-    img {
-      display: block;
+    .image {
+      height: 0;
+      width: 100%;
+      background-size: cover;
       outline: 1px solid color(white);
     }
   }
 
   @include media-md {
     .expandable-pillar-text {
-      width: columns(23);
+      width: columns(24);
       padding-right: $beat;
-      flex-basis: columns(23);
+      flex-basis: columns(24);
+      border-right: 1px solid color(white);
     }
 
     .expandable-pillar-images {
-      width: columns(18);
-      flex-basis: columns(18);
+      width: columns(17);
+      flex-basis: columns(17);
+    }
+  }
+}
+
+// Specific Expandable Pillars
+#city-of-portland {
+  .expandable-pillar-images {
+    .image {
+
+      &.-one {
+        padding-bottom: 100%;
+        background-image: url('../images/portland-1_zack-spear-25262-unsplash.jpg');
+      }
+      &.-two {
+        width: 264px;
+        height: 233px;
+        background-image: url('../images/portland-2_elena-kuchko-1135472-unsplash.jpg');
+      }
     }
   }
 }
