@@ -280,7 +280,6 @@
 #city-of-portland {
   .expandable-pillar-images {
     .image {
-
       &.-one {
         padding-bottom: 100%;
         background-image: url('../images/portland-1_zack-spear-25262-unsplash.jpg');
@@ -289,6 +288,33 @@
         width: 264px;
         height: 233px;
         background-image: url('../images/portland-2_elena-kuchko-1135472-unsplash.jpg');
+      }
+    }
+  }
+}
+
+#city-of-pittsburgh {
+  .expandable-pillar-images {
+    .image {
+      &.-one {
+        width: 88%;
+        padding-bottom: 71.3092%;
+        background-image: url('../images/pittsburgh-1_vidar-nordli-mathisen-789684-unsplash.jpg');
+      }
+      &.-two {
+        padding-bottom: 100%;
+        background-image: url('../images/pittsburgh-2_vidar-nordli-mathisen-606813-unsplash.jpg');
+      }
+    }
+  }
+}
+
+#city-of-san-bernadino {
+  .expandable-pillar-images {
+    .image {
+      &.-one {
+        padding-bottom: 66.8304%;
+        background-image: url('../images/san-bernadino-1_owen-rupp-607232-unsplash.jpg');
       }
     }
   }
