@@ -142,6 +142,11 @@
       @include h1;
       color: color(blue);
       @include boxed-text(3);
+      margin: 0 0 #{$beat * 4};
+
+      @include media-md {
+        margin-bottom: $beat * 5;
+      }
     }
 
     // Book/Next Steps

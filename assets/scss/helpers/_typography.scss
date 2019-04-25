@@ -113,6 +113,11 @@
   @include h5;
 }
 
+@mixin h6 {
+  @include font-copy;
+  @include paragraph-style(14, 24, .12em, normal, uppercase);
+}
+
 @mixin p {
   @include font-copy;
   @include paragraph-style(22, 30, 0, normal);

@@ -174,13 +174,12 @@ img {
 .logo {
   @include p2;
   margin: 0 0 $beat;
-  @include clearfix;
   a {
-    display: inline-block;
+    display: block;
+    position: relative;
     text-decoration: none;
   }
   .logo-mark {
-    float: left;
     width: $beat * 3;
     height: $beat * 3;
     border-radius: 50%;
@@ -196,10 +195,11 @@ img {
     }
   }
   .logo-text {
-    float: left;
-    margin-left: $beat;
-    vertical-align: top;
-    display: inline-block;
-    line-height: $beat * 3;
+    top: 50%;
+    right: 0;
+    line-height: 20px;
+    position: absolute;
+    transform: translateY(-50%);
+    width: calc(100% - #{$beat * 4});
   }
 }

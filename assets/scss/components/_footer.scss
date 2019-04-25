@@ -12,22 +12,46 @@
   }
 
   .logo {
+    margin: 0 0 $beat * 3;
     .logo-mark {
       border: 1px solid color(offwhite);
       svg {
         fill: color(offwhite);
       }
     }
+  }
 
-    @include media-md {
-      margin: 0 0 #{$beat * 3} #{-$beat * 4};
-    }
+  h4 {
+    @include h6;
+    margin: 0 0 $beat;
+    color: color(gray);
+  }
+
+  .gfoa-info {
+    margin-bottom: $beat * 3;
   }
 
   .address,
-  .phone {
+  .phone,
+  .about-container p {
     margin: 0;
-    @include p2;
+    @include p;
+  }
+
+  .address-container {
+    margin-bottom: $beat * 3;
+    @include media-md {
+      margin-bottom: 0;
+      width: columns(18);
+      max-width: columns(18);
+    }
+  }
+
+  .about-container {
+    @include media-md {
+      width: columns(23);
+      max-width: columns(23);
+    }
   }
 
   .social {
@@ -40,14 +64,15 @@
     @extend .semantic-list;
 
     @include media-md {
-      float: right;
-      display: flex;
-      width: $beat * 10;
-      justify-content: space-between;
+      @include clearfix;
     }
 
     li {
-      display: inline-block;
+      float: left;
+
+      + li {
+        margin-left: 30px;
+      }
     }
 
     a {

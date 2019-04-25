@@ -202,6 +202,7 @@
 // Expandable Pillars
 .expandable-pillar {
   z-index: 2;
+  @include smooth;
   position: relative;
   color: color(white);
 
@@ -244,12 +245,14 @@
   }
 
   h2 {
-    margin: 0;
     @include h3;
+    margin: 0 0 4px;
   }
 
   &-text {
-    padding-bottom: $beat;
+    p {
+      margin: 0 0 30px;
+    }
   }
 
   &-images {
@@ -258,6 +261,10 @@
       width: 100%;
       background-size: cover;
       outline: 1px solid color(white);
+
+      + .image {
+        margin-top: 1px;
+      }
     }
   }
 
@@ -285,8 +292,8 @@
         background-image: url('../images/portland-1_zack-spear-25262-unsplash.jpg');
       }
       &.-two {
-        width: 264px;
-        height: 233px;
+        width: 65.1594%;
+        height: 36.5203%;
         background-image: url('../images/portland-2_elena-kuchko-1135472-unsplash.jpg');
       }
     }
@@ -295,10 +302,11 @@
 
 #city-of-pittsburgh {
   .expandable-pillar-images {
+    padding-top: 30px;
     .image {
       &.-one {
         width: 88%;
-        padding-bottom: 71.3092%;
+        padding-bottom: 62.854%;
         background-image: url('../images/pittsburgh-1_vidar-nordli-mathisen-789684-unsplash.jpg');
       }
       &.-two {
@@ -311,6 +319,7 @@
 
 #city-of-san-bernadino {
   .expandable-pillar-images {
+    padding-top: $beat * 3;
     .image {
       &.-one {
         padding-bottom: 66.8304%;
