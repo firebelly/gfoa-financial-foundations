@@ -14,6 +14,8 @@ var Main = (function($) {
       $flashBar,
       $startButton,
       $pillarNav,
+      pillarHeights = [],
+      pillarScenes = [],
       breakpointIndicatorString,
       breakpoint_xl,
       breakpoint_nav,
@@ -38,6 +40,11 @@ var Main = (function($) {
     // init scrollmagic controller
     controller = new ScrollMagic.Controller();
 
+    // Init pillar scenes
+    for (var p = 0; p < $('.pillar').length - 1; p++) {
+      var $pillar = $('.pillar').eq(p);
+      pillarScenes.push(new ScrollMagic.Scene({triggerElement: $pillar[0], triggerHook: 'onLeave'}));
+    }
     // Set screen size vars
     _resize();
 
@@ -49,6 +56,8 @@ var Main = (function($) {
     _initStartButton();
     _backgroundGrid();
     _initExpandingPillars();
+    // Pillar Heights
+    _updatePillarScenes();
     _initPillarNav();
     _initScrollMagic();
 
@@ -190,7 +199,8 @@ var Main = (function($) {
       complete: function() {
         $pillar.find('.expandable-pillar-content').velocity('slideUp', {
           easing: 'easeOutQuart',
-          duration: 250
+          duration: 250,
+          complete: _updatePillarScenes
         });
       }
     });
@@ -202,6 +212,7 @@ var Main = (function($) {
       easing: 'easeOutQuart',
       duration: 350,
       complete: function() {
+        _updatePillarScenes();
         $pillar.find('.expandable-pillar-content > .sitewrapper').velocity({
           opacity: 1
         },{
@@ -225,6 +236,13 @@ var Main = (function($) {
   function _hidePillars() {
     _deactivatePillar($('.expandable-pillar'));
     $('.expandable-pillar-content').hide();
+  }
+
+  function _updatePillarScenes() {
+    pillarHeights = [$('#pillar-1').outerHeight(), $('#pillar-2').outerHeight(), $('#pillar-3').outerHeight(), $('#pillar-4').outerHeight()];
+    for (var p = 0; p < pillarScenes.length; p++) {
+      pillarScenes[p].duration(pillarHeights[p]);
+    }
   }
 
   function _initPillarNav() {
@@ -277,19 +295,20 @@ var Main = (function($) {
         .setClassToggle('#pillar-nav li[data-section="events"]', '-active')
         .addTo(controller);
 
+    function getPillarHeight(i) {
+      return pillarHeights[i];
+    }
+
     // Line progress
     for (var i = 0; i < $('#pillar-nav .primary li').length - 1; i++) {
       var $progressBar = $('#pillar-nav .primary li').eq(i).find('.pillar-progress');
-      var $pillar = $('.pillar').eq(i);
 
       var tween = TweenMax.fromTo($progressBar, 1,
           {width: "0%"},
           {width: "25%"}
       );
 
-      var progressScene = new ScrollMagic.Scene({triggerElement: $pillar[0], triggerHook: 'onLeave', duration: $pillar.outerHeight()})
-          .setTween(tween)
-          .addTo(controller);
+      pillarScenes[i].duration(getPillarHeight(i)).setTween(tween).addTo(controller);
     }
   }
 
@@ -360,6 +379,9 @@ var Main = (function($) {
 
       // background grids
       _backgroundGrid();
+
+      // recalulate pillar sizes
+      _updatePillarScenes();
     }, 250);
   }
 
