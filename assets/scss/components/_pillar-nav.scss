@@ -66,18 +66,21 @@
         color: color(gray);
       }
 
-      white-space: nowrap;
+      .dots {
+        position: relative;
+        display: inline-block;
+      }
 
       li {
-        z-index: 1;
-        position: relative;
         display: inline-block;
 
         a {
+          z-index: 1;
           width: 9px;
           height: 9px;
           display: block;
           border-radius: 50%;
+          position: relative;
           border: 1px solid color(black);
           background-color: color(offwhite);
 
@@ -96,22 +99,23 @@
             background-color: color(black);
           }
         }
+
+        .pillar-progress {
+          left: 0;
+          top: 50%;
+          width: 25%;
+          height: 1px;
+          position: absolute;
+          background-color: color(black);
+        }
       }
 
-      svg {
-        position: absolute;
-        stroke: color(black);
-      }
-
-      .mobile-nav-line {
-        top: 9px;
-        left: 9px;
-        right: 9px;
-        width: 127px;
-      }
-      .desktop-nav-line {
-        width: 192px;
-        display: none;
+      @for $i from 2 through 4 {
+        li:nth-of-type(#{$i}) {
+          .pillar-progress {
+            left: ($i - 1) * 25%;
+          }
+        }
       }
     }
 
@@ -187,7 +191,7 @@
     }
 
     ul {
-      float: left;
+      white-space: nowrap;
 
       &.primary {
         margin: 0;
@@ -201,14 +205,9 @@
           margin-left: 36px;
         }
 
-        .mobile-nav-line {
-          display: none;
-        }
-        .desktop-nav-line {
-          top: 50%;
-          right: 4px;
+        .pillar-progress {
+          right: 0;
           display: block;
-          transform: translateY(1px);
         }
       }
 
@@ -219,7 +218,6 @@
         transform: none;
         margin-left: 50px;
         position: relative;
-        white-space: nowrap;
 
         li {
           border: none;

@@ -22,6 +22,7 @@ var Main = (function($) {
       breakpoint_sm,
       breakpoint_xs,
       resizeTimer,
+      controller,
       transitionElements,
       isAnimating = false;
 
@@ -33,6 +34,9 @@ var Main = (function($) {
     $flashBar = $('#flashbar');
     $startButton = $('#start-button');
     $pillarNav = $('#pillar-nav');
+
+    // init scrollmagic controller
+    controller = new ScrollMagic.Controller();
 
     // Set screen size vars
     _resize();
@@ -245,8 +249,6 @@ var Main = (function($) {
       _scrollBody($target, true);
     });
 
-    var controller = new ScrollMagic.Controller();
-
     // Stickify Pillar nav
     new ScrollMagic.Scene({triggerElement: '#pillar-1', triggerHook: 'onLeave'})
         .setClassToggle('#pillar-nav', '-stuck')
@@ -276,24 +278,19 @@ var Main = (function($) {
         .addTo(controller);
 
     // Line progress
-    var $mobileNavLine = $('#mobile-nav-line');
-    var $desktopNavLine = $('#desktop-nav-line');
-    _pathPrepare($mobileNavLine);
-    _pathPrepare($desktopNavLine);
+    for (var i = 0; i < $('#pillar-nav .primary li').length - 1; i++) {
+      var $progressBar = $('#pillar-nav .primary li').eq(i).find('.pillar-progress');
+      var $pillar = $('.pillar').eq(i);
 
-    // build tweens
-    var mobileTween = new TimelineMax()
-      .add(TweenMax.to($mobileNavLine, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}));
-    var desktopTween = new TimelineMax()
-      .add(TweenMax.to($desktopNavLine, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+      var tween = TweenMax.fromTo($progressBar, 1,
+          {width: "0%"},
+          {width: "25%"}
+      );
 
-    var mobilePillarNavScene = new ScrollMagic.Scene({triggerElement: "#pillar-scroll-container", triggerHook: 'onLeave', duration: $('#pillar-scroll-container').outerHeight(), tweenChanges: true})
-        .setTween(mobileTween)
-        .addTo(controller);
-
-    var desktopPillarNavScene = new ScrollMagic.Scene({triggerElement: "#pillar-scroll-container", triggerHook: 'onLeave', duration: $('#pillar-scroll-container').outerHeight(), tweenChanges: true})
-        .setTween(desktopTween)
-        .addTo(controller);
+      var progressScene = new ScrollMagic.Scene({triggerElement: $pillar[0], triggerHook: 'onLeave', duration: $pillar.outerHeight()})
+          .setTween(tween)
+          .addTo(controller);
+    }
   }
 
   function _pathPrepare($el) {
@@ -309,9 +306,6 @@ var Main = (function($) {
 
     // prepare SVG
     _pathPrepare($line);
-
-    // init controller
-    var controller = new ScrollMagic.Controller();
 
     // build tween
     var tween = new TimelineMax()
