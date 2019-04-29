@@ -2,6 +2,7 @@
 
 .pillar {
   overflow: hidden;
+  position: relative;
 
   &.-light {
     @include media-md {

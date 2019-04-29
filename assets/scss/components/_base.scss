@@ -22,7 +22,7 @@ a {
 	color: inherit;
 }
 
-.inline-link {
+@mixin inline-link() {
   z-index: 1;
   position: relative;
   display: inline-block;
@@ -48,6 +48,10 @@ a {
   }
 }
 
+.inline-link {
+  @include inline-link;
+}
+
 img {
   height: auto;
 	max-width: 100%;
@@ -61,7 +65,7 @@ img {
   padding: 0 $padding-sm;
   max-width: $sitewrapper;
   @include media-md {
-    padding: 0 $padding-md;
+    padding: 0 $padding-lg;
   }
 }
 
@@ -79,10 +83,14 @@ img {
   color: color(offwhite);
   transform: translateY(-100%);
   background-color: color(black);
-  transition: transform .25s ease-out;
+  transition: transform .25s ease-out, opacity .1s ease-out .26s;
 
   &.-active {
     transform: translateY(0);
+  }
+
+  &.-hidden {
+    opacity: 0;
   }
 
   p {
@@ -103,7 +111,7 @@ img {
     transform: translateY(-50%);
 
     @include media-md {
-      right: $padding-md;
+      right: $padding-lg;
     }
   }
 }
@@ -157,8 +165,8 @@ img {
     }
 
     @include media-md {
-      left: $padding-md;
-      right: $padding-md;
+      left: $padding-lg;
+      right: $padding-lg;
     }
   }
 

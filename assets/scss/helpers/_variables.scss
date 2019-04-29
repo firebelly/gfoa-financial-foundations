@@ -23,9 +23,10 @@ $breakpoint-nav: 1100px;
 $breakpoint-xl: 1200px;
 
 // Site Wrapper
-$sitewrapper: 1280px;
+$sitewrapper: 1272px;
 
 // Padding/spacing
 $beat: 24px;
-$padding-sm: 74px;
-$padding-md: $padding-sm * 2;
+$padding-sm: 28px;
+$padding-md: $beat * 3;
+$padding-lg: $beat * 6;

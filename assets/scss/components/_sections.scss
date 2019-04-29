@@ -31,7 +31,6 @@
       padding: 0;
       cursor: pointer;
       width: $beat * 5;
-      left: $padding-md;
       position: absolute;
       color: color(white);
       height: $beat * 2.5;
@@ -49,6 +48,7 @@
         position: absolute;
         bottom: #{$beat - 5px};
         transform: translateX(-50%);
+        border-bottom: 1px solid color(white);
       }
 
       svg {
@@ -138,15 +138,20 @@
 
   // Next Steps
   &.section-next-step {
+
+    > * + * {
+      margin-top: $beat * 4;
+
+      @include media-md {
+        margin-top: $beat * 5;
+      }
+    }
+
     .section-title {
+      margin: 0;
       @include h1;
       color: color(blue);
       @include boxed-text(3);
-      margin: 0 0 #{$beat * 4};
-
-      @include media-md {
-        margin-bottom: $beat * 5;
-      }
     }
 
     // Book/Next Steps
@@ -227,8 +232,6 @@
 
     // Next Steps
     .next-steps {
-      margin-bottom: $beat * 3;
-
       > .sitewrapper > .grid:first-of-type {
         margin-bottom: $beat * 3;
       }
@@ -303,40 +306,50 @@
       }
 
       .event {
-        display: flex;
         padding: $beat;
+        @include smooth;
         @include outlined-box;
-        justify-content: space-between;
         background-color: color(offwhite);
 
         .event-date {
-          margin: 0;
           @include p;
+          margin: 0 0 $beat;
           font-style: italic;
         }
 
         .event-title {
-          margin: 0;
-          @include p;
+          @include p2;
           font-weight: 700;
           color: color(blue);
+          margin: 0 0 #{$beat / 4};
         }
 
         .event-venue {
+          margin-bottom: $beat;
+
           h4,
           .address {
             margin: 0;
-            @include h5;
+            @include p2;
           }
         }
 
         .event-link {
           margin: 0;
         }
-      }
 
-      @include media-md {
-        margin: #{$beat * 7} 0;
+        @include media-md {
+          display: flex;
+          justify-content: space-between;
+
+          .event-date {
+            margin-bottom: 0;
+          }
+
+          .event-title {
+            margin-bottom: $beat;
+          }
+        }
       }
     }
   }

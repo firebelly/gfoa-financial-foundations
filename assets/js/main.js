@@ -13,6 +13,7 @@ var Main = (function($) {
       $body,
       $flashBar,
       $startButton,
+      $pillarNav,
       breakpointIndicatorString,
       breakpoint_xl,
       breakpoint_nav,
@@ -31,6 +32,7 @@ var Main = (function($) {
     $body = $('body');
     $flashBar = $('#flashbar');
     $startButton = $('#start-button');
+    $pillarNav = $('#pillar-nav');
 
     // Set screen size vars
     _resize();
@@ -43,6 +45,7 @@ var Main = (function($) {
     _initStartButton();
     _backgroundGrid();
     _initExpandingPillars();
+    _initPillarNav();
     _initScrollMagic();
 
     // Esc handlers
@@ -56,6 +59,25 @@ var Main = (function($) {
 
   } // end init()
 
+  function _scrollBody(element, offset) {
+    if (!breakpoint_md && typeof offset !== "undefined" && offset !== null) {
+      offset = $('#pillar-nav').outerHeight();
+    } else {
+      offset = 0;
+    }
+
+    if (element.length) {
+      isAnimating = true;
+      element.velocity('scroll', {
+        duration: 500,
+        offset: -offset,
+        complete: function(elements) {
+          isAnimating = false;
+        }
+      }, "easeOutSine");
+    }
+  }
+
   function _initFlashBar() {
     setTimeout(function() {
       $flashBar.addClass('-active');
@@ -63,18 +85,13 @@ var Main = (function($) {
 
     $('#flashbar-close').on('click', function() {
       $flashBar.removeClass('-active');
+      $flashBar.addClass('-hidden');
     });
   }
 
   function _initStartButton() {
     $startButton.on('click', function() {
-      isAnimating = true;
-      $('#five-pillars').velocity('scroll', {
-        duration: 500,
-        complete: function(elements) {
-          isAnimating = false;
-        }
-      }, "easeOutSine");
+      _scrollBody($('#five-pillars'));
     });
   }
 
@@ -95,7 +112,7 @@ var Main = (function($) {
         $inner.find('.grid-rows').append('<div class="grid-row" style="top: '+ beat*r +'px;"></div>');
       }
 
-      $inner.append('<div class="grid-columns"></div><div class="grid-rows"></div>');
+      $inner.html('<div class="grid-columns"></div><div class="grid-rows"></div>');
 
       for (var c = 0; c <= columns; c++) {
         if (stagger === true) {
@@ -206,18 +223,92 @@ var Main = (function($) {
     $('.expandable-pillar-content').hide();
   }
 
+  function _initPillarNav() {
+    // Open/Close Secondary UL
+    var $secondaryNavToggle = $('.secondary-nav-toggle');
+    var $secondaryNav = $pillarNav.find('ul.secondary');
+
+    // Open/close secondary nav
+    $secondaryNavToggle.on('click', function() {
+      $secondaryNav.toggleClass('-active');
+    });
+
+    // Close secondary nav when click on an item
+    $secondaryNav.on('click', 'a', function() {
+      $secondaryNav.removeClass('-active');
+    });
+
+    // Smooth scroll to section
+    $pillarNav.on('click', 'ul a', function(e) {
+      e.preventDefault();
+      var $target = $($(this).attr('href'));
+      _scrollBody($target, true);
+    });
+
+    var controller = new ScrollMagic.Controller();
+
+    // Stickify Pillar nav
+    new ScrollMagic.Scene({triggerElement: '#pillar-1', triggerHook: 'onLeave'})
+        .setClassToggle('#pillar-nav', '-stuck')
+        .addTo(controller);
+
+    // Set active states on pillar nav items
+    new ScrollMagic.Scene({triggerElement: '#pillar-1', triggerHook: 'onLeave'})
+        .setClassToggle('#pillar-nav li[data-pillar="1"]', '-active')
+        .addTo(controller);
+    new ScrollMagic.Scene({triggerElement: '#pillar-2', triggerHook: 'onLeave'})
+        .setClassToggle('#pillar-nav li[data-pillar="2"]', '-active')
+        .addTo(controller);
+    new ScrollMagic.Scene({triggerElement: '#pillar-3', triggerHook: 'onLeave'})
+        .setClassToggle('#pillar-nav li[data-pillar="3"]', '-active')
+        .addTo(controller);
+    new ScrollMagic.Scene({triggerElement: '#pillar-4', triggerHook: 'onLeave'})
+        .setClassToggle('#pillar-nav li[data-pillar="4"]', '-active')
+        .addTo(controller);
+    new ScrollMagic.Scene({triggerElement: '#pillar-5', triggerHook: 'onLeave'})
+        .setClassToggle('#pillar-nav li[data-pillar="5"]', '-active')
+        .addTo(controller);
+    new ScrollMagic.Scene({triggerElement: '#resources', triggerHook: 'onLeave'})
+        .setClassToggle('#pillar-nav li[data-section="resources"]', '-active')
+        .addTo(controller);
+    new ScrollMagic.Scene({triggerElement: '#events', triggerHook: 'onLeave'})
+        .setClassToggle('#pillar-nav li[data-section="events"]', '-active')
+        .addTo(controller);
+
+    // Line progress
+    var $mobileNavLine = $('#mobile-nav-line');
+    var $desktopNavLine = $('#desktop-nav-line');
+    _pathPrepare($mobileNavLine);
+    _pathPrepare($desktopNavLine);
+
+    // build tweens
+    var mobileTween = new TimelineMax()
+      .add(TweenMax.to($mobileNavLine, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+    var desktopTween = new TimelineMax()
+      .add(TweenMax.to($desktopNavLine, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+
+    var mobilePillarNavScene = new ScrollMagic.Scene({triggerElement: "#pillar-scroll-container", triggerHook: 'onLeave', duration: $('#pillar-scroll-container').outerHeight(), tweenChanges: true})
+        .setTween(mobileTween)
+        .addTo(controller);
+
+    var desktopPillarNavScene = new ScrollMagic.Scene({triggerElement: "#pillar-scroll-container", triggerHook: 'onLeave', duration: $('#pillar-scroll-container').outerHeight(), tweenChanges: true})
+        .setTween(desktopTween)
+        .addTo(controller);
+  }
+
+  function _pathPrepare($el) {
+    var lineLength = $el[0].getTotalLength();
+    $el.css("stroke-dasharray", lineLength);
+    $el.css("stroke-dashoffset", lineLength);
+  }
+
   function _initScrollMagic() {
-    function pathPrepare ($el) {
-      var lineLength = $el[0].getTotalLength();
-      $el.css("stroke-dasharray", lineLength);
-      $el.css("stroke-dashoffset", lineLength);
-    }
 
     var $line = $("path#scroll-line");
     var $dot = $("circle#scroll-dot");
 
     // prepare SVG
-    pathPrepare($line);
+    _pathPrepare($line);
 
     // init controller
     var controller = new ScrollMagic.Controller();
@@ -228,7 +319,7 @@ var Main = (function($) {
       .add(TweenMax.to($line, .1, {strokeDashoffset: 0, ease:Linear.easeNone}));
 
     // build scene
-    var scene = new ScrollMagic.Scene({triggerElement: "#section-one-art", duration: 200, tweenChanges: true})
+    var scene = new ScrollMagic.Scene({triggerElement: "#section-one-art", duration: $('#section-one-art').outerHeight(), tweenChanges: true})
             .setTween(tween)
             .addTo(controller);
   }
@@ -272,6 +363,9 @@ var Main = (function($) {
     resizeTimer = setTimeout(function() {
       // Re-enable transitions
       _enableTransitions();
+
+      // background grids
+      _backgroundGrid();
     }, 250);
   }
 

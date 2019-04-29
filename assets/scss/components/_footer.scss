@@ -3,12 +3,12 @@
 .site-footer {
   overflow: hidden;
   position: relative;
-  padding: $padding-sm 0;
+  padding: $padding-md 0;
   color: color(offwhite);
   background-color: color(black);
 
   @include media-md {
-    padding: $padding-md 0;
+    padding: $padding-lg 0;
   }
 
   .logo {
@@ -81,11 +81,13 @@
       display: flex;
       border-radius: 50%;
       border: 1px solid color(white);
+      transition: border-color .2s ease-out;
 
       svg {
         margin: auto;
         fill: color(white);
         display: inline-block;
+        transition: fill .2s ease-out;
         &.icon-facebook {
           width: 6px;
           height: 13px;
@@ -97,6 +99,14 @@
         &.icon-linkedin {
           width: 11px;
           height: 11px;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        border-color: color(gray);
+        svg {
+          fill: color(gray);
         }
       }
     }
