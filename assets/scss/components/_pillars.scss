@@ -50,7 +50,6 @@
     }
 
     .pillar-title {
-      @include h2;
       margin: 0 0 $beat;
       @include boxed-text(2);
     }

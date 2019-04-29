@@ -332,7 +332,7 @@ var Main = (function($) {
       .add(TweenMax.to($line, .1, {strokeDashoffset: 0, ease:Linear.easeNone}));
 
     // build scene
-    var scene = new ScrollMagic.Scene({triggerElement: "#section-one-art", duration: $('#section-one-art').outerHeight(), tweenChanges: true})
+    var introScene = new ScrollMagic.Scene({triggerElement: "#section-one-art", duration: $('#section-one-art').outerHeight(), tweenChanges: true})
             .setTween(tween)
             .addTo(controller);
   }

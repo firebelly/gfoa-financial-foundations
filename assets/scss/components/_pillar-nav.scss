@@ -84,9 +84,9 @@
           border: 1px solid color(black);
           background-color: color(offwhite);
 
-          &:hover,
-          &:focus {
-            background-color: color(black);
+          &:hover {
+            border-color: color(white);
+            background-color: color(offwhite);
           }
         }
 
@@ -97,6 +97,9 @@
         &.-active {
           a {
             background-color: color(black);
+            &:hover {
+              background-color: color(offwhite);
+            }
           }
         }
 

@@ -87,6 +87,26 @@
   z-index: 1;
   @include clearfix;
   position: relative;
+
+  @if $size == 1 {
+    line-height: 1.6;
+    span {
+      height: #{($beat * $size) - 1px};
+    }
+  } @else if $size == 2 {
+    @include h3;
+    line-height: 1.55;
+    span {
+      height: 42px;
+    }
+  } @else if $size == 3 {
+    @include h2;
+    line-height: 1.1;
+    span {
+      height: #{($beat * 2) - 1px};
+    }
+  }
+
   span {
     clear: left;
     float: left;
@@ -95,7 +115,6 @@
     margin: 1px 0 0 1px;
     padding-right: $beat;
     display: inline-block;
-    height: #{($beat * $size) - 1px};
     &::after {
       top: 0;
       left: 0;
@@ -108,12 +127,16 @@
       @include outline($color);
     }
 
-    @if $size == 1 {
-      line-height: 1.6;
-    } @else if $size == 2 {
-      line-height: 1.1;
-    } @else if $size == 3 {
-      line-height: .98;
+    @include media-md {
+      height: #{($beat * $size) - 1px};
+
+      @if $size == 2 {
+        @include h2;
+        line-height: 1.1;
+      } @else if $size == 3 {
+        @include h1;
+        line-height: .98;
+      }
     }
   }
 }

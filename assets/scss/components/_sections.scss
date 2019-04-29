@@ -76,7 +76,6 @@
     border-bottom: 1px solid color(black);
 
     h2 {
-      @include h1;
       color: color(white);
       @include boxed-text(3);
       margin: 0 0 #{$beat * 2};
@@ -131,6 +130,90 @@
         }
         .radial-two {
           animation: flash 3s infinite .5s;
+        }
+      }
+    }
+  }
+
+  &.section-takeaway {
+    > .sitewrapper:first-of-type::before {
+      z-index: 1;
+      content: '';
+      bottom: 100%;
+      cursor: pointer;
+      width: $beat * 5;
+      position: absolute;
+      height: $beat * 2.5;
+      background: color(black);
+      border: 1px solid color(black);
+      border-bottom: transparent;
+      transform: translateY(-$beat * 3);
+      border-radius: #{$beat * 2.5} #{$beat * 2.5} 0 0;
+    }
+
+    h2 {
+      @include boxed-text(2);
+      margin: 0 0 #{$beat * 5};
+    }
+
+    .-content {
+      p {
+        margin: 0;
+      }
+    }
+
+    @include media-md {
+      > .sitewrapper:first-of-type::before {
+        transform: translateY(-$beat * 6);
+      }
+
+      h2 {
+        @include boxed-text(3);
+      }
+    }
+
+    .-top {
+      margin-bottom: $beat * 8;
+
+      h3 {
+        margin: 0;
+      }
+
+      @include media-md {
+        margin-bottom: $beat * 20;
+      }
+    }
+
+    .-bottom {
+      .instructions {
+        @include p2;
+      }
+
+      h3 {
+        margin: 0;
+        @include boxed-text(3);
+
+        &:last-of-type {
+          margin-left: 70px;
+        }
+      }
+
+      @include media-md {
+        @include clearfix;
+        position: relative;
+
+        .instructions {
+          position: absolute;
+        }
+
+        h3:first-of-type {
+          float: right;
+          margin-right: 60px;
+        }
+
+        h3:last-of-type {
+          clear: right;
+          margin-left: $beat * 6;
         }
       }
     }
