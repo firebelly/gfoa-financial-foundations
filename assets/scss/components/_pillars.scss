@@ -42,6 +42,30 @@
     }
   }
 
+  .section-art {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+
+    .pipe {
+      height: 100%;
+      position: relative;
+      path {
+        fill: none;
+        stroke-width: 10;
+      }
+      .foreground {
+        stroke: color(black);
+      }
+      .background {
+        stroke: color(white);
+      }
+    }
+
+  }
+
   header {
     .pillar-label {
       margin: 0;
@@ -124,6 +148,12 @@
       padding-bottom: $beat * 2;
       .background-grid {
         top: $beat * 12;
+      }
+
+      .section-art {
+        .pipe {
+          right: 96px;
+        }
       }
 
       .shapes {

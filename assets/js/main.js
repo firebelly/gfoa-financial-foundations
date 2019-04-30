@@ -337,6 +337,25 @@ var Main = (function($) {
             .setTween(tween)
             .addTo(controller);
 
+    // Pipes
+    var pipes = $('svg.pipe');
+    for (var p = 0; p < pipes.length; p++) {
+      var $section = pipes.eq(p).closest('section');
+      var $pipe = pipes.eq(p).find('path.foreground');
+
+      // prepare SVG
+      _pathPrepare($pipe);
+
+      // build tween
+      var pipeTween = new TimelineMax()
+        .add(TweenMax.to($pipe, .1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+
+      // build scene
+      new ScrollMagic.Scene({triggerElement: $section[0], duration: $section.outerHeight()})
+          .setTween(pipeTween)
+          .addTo(controller);
+    }
+
     // Parallax Shapes
     var shapes = $('.shapes');
     for (var s = 0; s < shapes.length; s++) {
@@ -349,7 +368,6 @@ var Main = (function($) {
           TweenMax.fromTo($section.find('.shapes svg.very-fast'), 1, {yPercent: 55}, {yPercent: -55, ease: Linear.easeNone})
         ]);
 
-      console.log($section[0]);
       // build scene
       new ScrollMagic.Scene({triggerElement: $section[0], duration: $section.outerHeight() * 1.5})
           .setTween(shapesTween)
