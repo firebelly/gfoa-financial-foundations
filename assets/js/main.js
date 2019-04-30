@@ -45,6 +45,7 @@ var Main = (function($) {
       var $pillar = $('.pillar').eq(p);
       pillarScenes.push(new ScrollMagic.Scene({triggerElement: $pillar[0], triggerHook: 'onLeave'}));
     }
+
     // Set screen size vars
     _resize();
 
@@ -335,6 +336,23 @@ var Main = (function($) {
     var introScene = new ScrollMagic.Scene({triggerElement: "#section-one-art", duration: $('#section-one-art').outerHeight(), tweenChanges: true})
             .setTween(tween)
             .addTo(controller);
+
+    // Parallax Shapes
+    var shapes = $('.shapes');
+    for (var s = 0; s < shapes.length; s++) {
+      var $section = shapes.eq(s).closest('section');
+      // build tween
+      var shapesTween = new TimelineMax ()
+        .add([
+          TweenMax.fromTo($section.find('.shapes svg'), 1, {yPercent: 15}, {yPercent: -15, ease: Linear.easeNone})
+        ]);
+
+      console.log($section[0]);
+      // build scene
+      new ScrollMagic.Scene({triggerElement: $section[0], duration: $section.outerHeight() * 1.5})
+          .setTween(shapesTween)
+          .addTo(controller);
+    }
   }
 
   // Disabling transitions on certain elements on resize

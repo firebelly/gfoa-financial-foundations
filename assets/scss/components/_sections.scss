@@ -194,7 +194,6 @@
       background: color(black);
       border: 1px solid color(black);
       border-bottom: transparent;
-      transform: translateY(-$beat * 3);
       border-radius: #{$beat * 2.5} #{$beat * 2.5} 0 0;
     }
 
@@ -218,10 +217,6 @@
 
     @include media-md {
       padding-bottom: $beat * 18;
-
-      > .sitewrapper:first-of-type::before {
-        transform: translateY(-$beat * 6);
-      }
 
       h2 {
         @include boxed-text(3);
