@@ -344,7 +344,9 @@ var Main = (function($) {
       // build tween
       var shapesTween = new TimelineMax ()
         .add([
-          TweenMax.fromTo($section.find('.shapes svg'), 1, {yPercent: 15}, {yPercent: -15, ease: Linear.easeNone})
+          TweenMax.fromTo($section.find('.shapes svg.fast'), 1, {yPercent: 15}, {yPercent: -15, ease: Linear.easeNone}),
+          TweenMax.fromTo($section.find('.shapes svg.slow'), 1, {yPercent: 35}, {yPercent: -35, ease: Linear.easeNone}),
+          TweenMax.fromTo($section.find('.shapes svg.very-fast'), 1, {yPercent: 55}, {yPercent: -55, ease: Linear.easeNone})
         ]);
 
       console.log($section[0]);
