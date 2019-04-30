@@ -186,6 +186,40 @@
       .background-grid {
         top: $beat * 14;
       }
+
+      .shapes {
+        #shape-3a {
+          right: 0;
+          top: $beat;
+          width: 72px;
+          height: 339px;
+          transform: translateX(100%);
+        }
+        #shape-3b {
+          left: 0;
+          width: 169px;
+          height: 471px;
+          top: $beat * 5;
+        }
+        #shape-3c {
+          right: 0;
+          width: 456px;
+          height: 976px;
+          top: $beat * 6;
+        }
+        #shape-3d {
+          right: 0;
+          width: 120px;
+          height: 226px;
+          top: $beat * 29;
+        }
+        #shape-3e {
+          width: 121px;
+          height: 226px;
+          top: $beat * 33;
+          right: $beat * 14;
+        }
+      }
     }
   }
 
