@@ -79,11 +79,15 @@
     }
 
     p {
+      margin: 0;
       @include p;
-      margin: 0 0 $beat * 2;
 
       a {
         @extend .inline-link;
+      }
+
+      + * {
+        margin-top: $beat * 2;
       }
     }
 
@@ -352,9 +356,53 @@
   &.pillar-5 {
     @include media-md {
       padding-top: $beat * 7;
+      padding-bottom: $beat * 23;
+
+      .pillar-content {
+        margin-top: $beat * 8;
+      }
 
       .background-grid {
         top: $beat * 13;
+      }
+
+      .shapes {
+        #shape-6a {
+          top: -$beat;
+          width: 168px;
+          height: 375px;
+          left: -$beat * 3;
+        }
+        #shape-6b {
+          width: 193px;
+          height: 533px;
+          top: $beat * 6;
+          right: -$beat * 4;
+        }
+        #shape-6c {
+          width: 456px;
+          height: 1024px;
+          top: $beat * 9;
+          left: -$beat * 3;
+        }
+        #shape-6d {
+          width: 120px;
+          height: 226px;
+          top: $beat * 34;
+          left: $beat * 11;
+        }
+        #shape-6e {
+          width: 120px;
+          height: 226px;
+          top: $beat * 38;
+          left: -$beat * 3;
+        }
+        #shape-6f {
+          width: 193px;
+          height: 600px;
+          top: $beat * 55;
+          left: $beat * 15;
+        }
       }
     }
   }
