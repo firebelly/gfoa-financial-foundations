@@ -1,7 +1,7 @@
 // Pillars
 
 .pillar {
-  overflow: hidden;
+  // overflow: hidden;
   position: relative;
 
   &.-light {
@@ -294,10 +294,57 @@
     }
 
     @include media-md {
-      padding-top: $beat * 8;
+      padding-top: $beat * 11;
+      padding-bottom: $beat * 7;
 
       .background-grid {
-        top: $beat * 14;
+        top: $beat * 17;
+      }
+
+      .shapes {
+        #shape-5a {
+          width: 168px;
+          height: 454px;
+          top: -$beat * 7;
+          left: $beat * 2;
+        }
+        #shape-5b {
+          right: 0;
+          width: 72px;
+          height: 339px;
+          top: $beat * 9;
+          transform: translateX(100%);
+        }
+        #shape-5c {
+          width: 456px;
+          height: 846px;
+          top: $beat * 14;
+          right: -$beat * 2;
+        }
+        #shape-5d {
+          width: 120px;
+          height: 226px;
+          top: $beat * 31;
+          right: -$beat * 2;
+        }
+        #shape-5e {
+          width: 169px;
+          height: 316px;
+          top: $beat * 16;
+          left: -$beat * 4;
+        }
+        #shape-5f {
+          width: 121px;
+          height: 480px;
+          top: $beat * 41;
+          right: $beat * 16;
+        }
+        #shape-5g {
+          width: 168px;
+          height: 522px;
+          top: $beat * 52;
+          right: $beat * 2;
+        }
       }
     }
   }
