@@ -25,6 +25,52 @@
       @include boxed-text(3);
     }
 
+    .shapes {
+      #shape-1a {
+        top: -16px;
+        width: 120px;
+        height: 297px;
+        right: $beat * 11;
+      }
+      #shape-1b {
+        width: 289px;
+        height: 816px;
+        top: -$beat * 3;
+        right: -$beat * 4;
+      }
+      #shape-1c {
+        width: 169px;
+        height: 504px;
+        top: $beat * 10;
+        right: $beat * 13;
+      }
+      #shape-1d {
+        width: 121px;
+        height: 456px;
+        top: $beat * 16;
+        right: $beat * 8;
+      }
+      #shape-1e {
+        width: 96px;
+        height: 264px;
+        top: $beat * 17;
+        left: -$beat * 4;
+        transform: translateX(-100%);
+      }
+      #shape-1f {
+        width: 49px;
+        height: 193px;
+        top: $beat * 20;
+        left: $beat * 15;
+      }
+      #shape-1g {
+        width: 73px;
+        height: 136px;
+        top: $beat * 22;
+        right: -$beat * 2;
+      }
+    }
+
     .start {
       @extend .button-reset;
       z-index: 1;
