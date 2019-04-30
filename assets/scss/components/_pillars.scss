@@ -42,30 +42,6 @@
     }
   }
 
-  .section-art {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-
-    .pipe {
-      height: 100%;
-      position: relative;
-      path {
-        fill: none;
-        stroke-width: 10;
-      }
-      .foreground {
-        stroke: color(black);
-      }
-      .background {
-        stroke: color(white);
-      }
-    }
-
-  }
-
   header {
     .pillar-label {
       margin: 0;
@@ -152,7 +128,7 @@
 
       .section-art {
         .pipe {
-          right: 96px;
+          right: 246px;
         }
       }
 
@@ -222,6 +198,12 @@
         top: $beat * 14;
       }
 
+      .section-art {
+        .pipe {
+          right: 246px;
+        }
+      }
+
       .shapes {
         #shape-3a {
           right: 0;
@@ -264,6 +246,12 @@
 
       .background-grid {
         top: $beat * 13;
+      }
+
+      .section-art {
+        .pipe {
+          right: 203px;
+        }
       }
 
       .shapes {
@@ -335,6 +323,12 @@
         top: $beat * 17;
       }
 
+      .section-art {
+        .pipe {
+          right: 204px;
+        }
+      }
+
       .shapes {
         #shape-5a {
           width: 168px;
@@ -394,6 +388,12 @@
 
       .background-grid {
         top: $beat * 13;
+      }
+
+      .section-art {
+        .pipe {
+          left: 230px;
+        }
       }
 
       .shapes {

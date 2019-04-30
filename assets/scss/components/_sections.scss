@@ -1,5 +1,29 @@
 // Sections
 
+// Section Art
+.section-art {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+
+  .pipe {
+    height: 100%;
+    position: absolute;
+    path {
+      fill: none;
+      stroke-width: 10;
+    }
+    .foreground {
+      stroke: color(black);
+    }
+    .background {
+      stroke: color(white);
+    }
+  }
+}
+
 .section {
   position: relative;
   padding: #{$beat * 3} 0;
@@ -220,6 +244,17 @@
 
       h2 {
         @include boxed-text(3);
+      }
+
+      .section-art {
+        .pipe {
+          left: 346px;
+          height: auto;
+          width: 792px;
+          .foreground {
+            stroke: color(gold);
+          }
+        }
       }
 
       .shapes {
