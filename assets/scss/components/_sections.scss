@@ -353,6 +353,34 @@
       @include boxed-text(3);
     }
 
+    @include media-md {
+      padding-top: $beat * 8;
+
+      .shapes {
+        #shape-8a {
+          width: 193px;
+          height: 533px;
+          top: $beat * 46;
+          right: -$beat * 3;
+          transform: translateX(100%);
+        }
+        #shape-8b {
+          width: 121px;
+          height: 333px;
+          top: $beat * 69;
+          left: -$beat * 2;
+          transform: translateX(-100%);
+        }
+        #shape-8c {
+          width: 241px;
+          height: 666px;
+          right: -$beat;
+          top: $beat * 78;
+          transform: translateX(100%);
+        }
+      }
+    }
+
     // Book/Next Steps
     .book,
     .next-steps {
