@@ -120,6 +120,45 @@
       .background-grid {
         top: $beat * 12;
       }
+
+      .shapes {
+        #shape-2a {
+          width: 120px;
+          height: 360px;
+          top: $beat * 2;
+          right: $beat * 9;
+        }
+        #shape-2b {
+          width: 265px;
+          height: 726px;
+          top: $beat * 6;
+          left: $beat * 2;
+        }
+        #shape-2c {
+          width: 120px;
+          height: 332px;
+          top: $beat * 18;
+          left: $beat * 13;
+        }
+        #shape-2d {
+          width: 96px;
+          height: 258px;
+          top: $beat * 15;
+          left: -$beat * 2;
+        }
+        #shape-2e {
+          left: 0;
+          width: 120px;
+          height: 360px;
+          top: $beat * 29;
+        }
+        #shape-2f {
+          width: 72px;
+          height: 339px;
+          top: $beat * 33;
+          transform: translateX(-100%);
+        }
+      }
     }
   }
 

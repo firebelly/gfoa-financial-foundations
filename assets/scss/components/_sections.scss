@@ -102,6 +102,7 @@
         left: 50%;
         width: 10px;
         position: absolute;
+        margin-top: $beat * 2;
         fill: color(offwhite);
         transform: translateX(-50%);
       }
