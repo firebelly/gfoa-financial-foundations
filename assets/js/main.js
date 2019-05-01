@@ -351,6 +351,9 @@ var Main = (function($) {
     var takeawayScene = new ScrollMagic.Scene({triggerElement: ".section-takeaway", offset: -40, duration: $('.section-takeaway .pipe').outerHeight(), tweenChanges: true})
             .setTween(takeawayTween)
             .addTo(controller);
+    takeawayScene.on('end', function() {
+      $('.final-takeaway').toggleClass('highlight');
+    });
 
     // Pipes
     var pipes = $('.pillar svg.pipe');
