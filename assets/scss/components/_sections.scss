@@ -215,6 +215,9 @@
     }
 
     .-content {
+      h2 {
+        margin-bottom: 5px;
+      }
       p {
         margin: 0;
       }
@@ -228,17 +231,20 @@
     }
 
     @include media-md {
+      padding-top: 155px;
       padding-bottom: $beat * 18;
 
       h2 {
+        margin-bottom: 128px;
         @include boxed-text(3);
       }
 
       .section-art {
         .pipe {
+          top: -60px;
           left: 200px;
           height: auto;
-          width: 792px;
+          width: 802px;
           .foreground {
             stroke: color(gold);
           }
@@ -314,7 +320,7 @@
       }
 
       @include media-md {
-        margin-bottom: $beat * 20;
+        margin-bottom: 515px;
       }
     }
 
