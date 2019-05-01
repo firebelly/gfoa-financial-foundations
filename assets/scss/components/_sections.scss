@@ -447,6 +447,9 @@
         padding-bottom: $beat * 2;
         p {
           margin-bottom: 10px;
+          br {
+            display: none;
+          }
         }
       }
 
@@ -468,6 +471,14 @@
       }
 
       @include media-md {
+        .text {
+          p {
+            br {
+              display: block;
+            }
+          }
+        }
+
         .-left {
           width: columns(24);
           flex-basis: columns(24);
