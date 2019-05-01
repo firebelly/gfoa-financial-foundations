@@ -95,9 +95,11 @@ var Main = (function($) {
   function _initFlashBar() {
     setTimeout(function() {
       $flashBar.addClass('-active');
+      $body.addClass('flashbar-active');
     }, 500);
 
     $('#flashbar-close').on('click', function() {
+      $body.removeClass('flashbar-active');
       $flashBar.removeClass('-active');
       $flashBar.addClass('-hidden');
     });
