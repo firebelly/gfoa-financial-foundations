@@ -320,7 +320,7 @@ var Main = (function($) {
   }
 
   function _initScrollMagic() {
-
+    // 5 Pillars intro section
     var $line = $("path#scroll-line");
     var $dot = $("circle#scroll-dot");
 
@@ -337,10 +337,25 @@ var Main = (function($) {
             .setTween(tween)
             .addTo(controller);
 
+    // Takeaway Section
+    var $takeawayPipe = $(".section-takeaway .pipe path.foreground");
+
+    // prepare SVG
+    _pathPrepare($takeawayPipe);
+
+    // build tween
+    var takeawayTween = new TimelineMax()
+      .add(TweenMax.to($takeawayPipe, .1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+
+    // build scene
+    var takeawayScene = new ScrollMagic.Scene({triggerElement: ".section-takeaway", duration: $('.section-takeaway .pipe').outerHeight(), tweenChanges: true})
+            .setTween(takeawayTween)
+            .addTo(controller);
+
     // Pipes
-    var pipes = $('svg.pipe');
+    var pipes = $('.pillar svg.pipe');
     for (var p = 0; p < pipes.length; p++) {
-      var $section = pipes.eq(p).closest('section');
+      var $section = pipes.eq(p).closest('.pillar');
       var $pipe = pipes.eq(p).find('path.foreground');
 
       // prepare SVG
