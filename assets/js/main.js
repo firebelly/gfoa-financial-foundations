@@ -181,6 +181,7 @@ var Main = (function($) {
 
   function _activatePillar($pillar) {
     $pillar.addClass('-active');
+    $pillar.closest('.pillar').addClass('expandable-pillar-open');
   }
 
   function _collapsePillar($pillar) {
@@ -203,6 +204,7 @@ var Main = (function($) {
           duration: 250,
           complete: _updatePillarScenes
         });
+        $pillar.closest('.pillar').removeClass('expandable-pillar-open');
       }
     });
   }
@@ -211,7 +213,7 @@ var Main = (function($) {
     _activatePillar($pillar);
     $pillar.find('.expandable-pillar-content').velocity('slideDown', {
       easing: 'easeOutQuart',
-      duration: 350,
+      duration: 500,
       complete: function() {
         _updatePillarScenes();
         $pillar.find('.expandable-pillar-content > .sitewrapper').velocity({

@@ -3,6 +3,7 @@
 .pillar {
   // overflow: hidden;
   position: relative;
+  transition: padding-bottom .2s ease-out;
 
   &.-light {
     @include media-md {
@@ -460,6 +461,14 @@
           left: $beat * 15;
         }
       }
+    }
+  }
+
+  // Expandalbe Pillars Open
+  &.expandable-pillar-open {
+    padding-bottom: 0;
+    @include media-md {
+      padding-bottom: 0;
     }
   }
 }
