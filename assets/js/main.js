@@ -305,8 +305,8 @@ var Main = (function($) {
       var $progressBar = $('#pillar-nav .primary li').eq(i).find('.pillar-progress');
 
       var tween = TweenMax.fromTo($progressBar, 1,
-          {width: "0%"},
-          {width: "25%"}
+          {width: "0"},
+          {width: "28px"}
       );
 
       pillarScenes[i].duration(getPillarHeight(i)).setTween(tween).addTo(controller);

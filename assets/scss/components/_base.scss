@@ -99,6 +99,10 @@ img {
     margin: 0;
     @include h5;
 
+    .desktop-copy {
+      display: none;
+    }
+
     .arrow {
       margin: 0 .25em;
       display: inline-block;
@@ -117,7 +121,15 @@ img {
     position: absolute;
     transform: translateY(-50%);
 
-    @include media-md {
+  }
+
+  @include media-md {
+    p {
+      .desktop-copy {
+        display: inline;
+      }
+    }
+    .close {
       right: $padding-lg;
     }
   }

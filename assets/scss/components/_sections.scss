@@ -128,7 +128,7 @@ body.sm-loaded {
         position: absolute;
         bottom: #{$beat - 5px};
         transform: translateX(-50%);
-        border-bottom: 1px solid color(white);
+        @extend .inline-link;
       }
 
       svg {
