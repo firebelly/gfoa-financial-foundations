@@ -382,7 +382,14 @@ body.sm-loaded {
 
     .-bottom {
       .instructions {
+        margin: 0;
         @include p2;
+
+        .icon-arrow-right {
+          height: 10px;
+          width: 181px;
+          fill: color(offwhite);
+        }
       }
 
       .final-takeaway {
@@ -403,7 +410,13 @@ body.sm-loaded {
         position: relative;
 
         .instructions {
+          display: flex;
           position: absolute;
+          .icon-arrow-right {
+            top: 6px;
+            position: relative;
+            margin-left: $beat * 2;
+          }
         }
 
         .final-takeaway {
