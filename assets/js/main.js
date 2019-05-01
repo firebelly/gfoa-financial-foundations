@@ -391,6 +391,9 @@ var Main = (function($) {
           .setTween(shapesTween)
           .addTo(controller);
     }
+
+    // Add scroll-magic class to body to show hidden elements
+    $body.addClass('sm-loaded');
   }
 
   // Disabling transitions on certain elements on resize

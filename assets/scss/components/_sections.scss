@@ -1,5 +1,13 @@
 // Sections
 
+// Scroll-magic loaded
+body.sm-loaded {
+  .section-art .pipe .foreground,
+  .section.section-5-pillars .section-art #section-one-art #scroll-line {
+    opacity: 1;
+  }
+}
+
 // Section Art
 .section-art {
   top: 0;
@@ -17,6 +25,7 @@
       stroke-width: 10;
     }
     .foreground {
+      opacity: 0;
       stroke: color(black);
     }
     .background {
@@ -163,7 +172,7 @@
       }
     }
 
-    .scroll-art {
+    .section-art {
       pointer-events: none;
 
       p {
@@ -174,28 +183,63 @@
         transform: rotate(90deg);
         transform-origin: bottom right;
       }
+
+      #section-one-art {
+        path {
+          fill: none;
+        }
+        .line-background,
+        #scroll-line {
+          stroke-width: 10px;
+        }
+        #scroll-line {
+          opacity: 0;
+          stroke: color(black);
+        }
+        .line-background {
+          stroke: color(white);
+        }
+        .radial-one,
+        .radial-two {
+          stroke-width: 1px;
+          stroke: color(white);
+        }
+        .dot-background {
+          fill: color(white);
+        }
+      }
     }
 
     @include media-md {
       padding: #{$beat * 12} 0 #{$beat * 7};
 
-      .scroll-art {
+      .section-content {
+        width: columns(23);
+        flex-basis: columns(23);
+      }
+
+      .section-art {
+        top: auto;
         bottom: 0;
         width: 100%;
         position: absolute;
 
+        svg {
+          transform: translateY(2px);
+        }
+
         p {
-          right: 230px;
-          bottom: 210px;
+          right: 244px;
+          bottom: 464px;
         }
       }
 
       #section-one-art {
-        right: 24px;
+        right: 23px;
         bottom: -1px;
         float: right;
-        width: 216px;
-        height: 596px;
+        width: 217px;
+        height: 851px;
         position: relative;
 
         .radial-one {
