@@ -75,11 +75,13 @@ img {
   left: 0;
   right: 0;
   z-index: 10;
-  padding: 10px;
+  height: 36px;
+  display: flex;
   @include smooth;
   position: fixed;
   font-style: italic;
   text-align: center;
+  align-items: center;
   color: color(offwhite);
   transform: translateY(-100%);
   background-color: color(black);
@@ -96,6 +98,11 @@ img {
   p {
     margin: 0;
     @include h5;
+
+    .arrow {
+      margin: 0 .25em;
+      display: inline-block;
+    }
   }
 
   a {
@@ -105,8 +112,8 @@ img {
   .close {
     top: 50%;
     right: 10px;
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
     position: absolute;
     transform: translateY(-50%);
 
@@ -182,9 +189,11 @@ img {
 .logo {
   @include p2;
   margin: 0 0 $beat;
+  display: inline-block;
   a {
-    display: block;
+    display: flex;
     position: relative;
+    align-items: center;
     text-decoration: none;
   }
   .logo-mark {
@@ -203,12 +212,9 @@ img {
     }
   }
   .logo-text {
-    top: 50%;
-    right: 0;
+    margin-left: 22px;
     line-height: 20px;
-    position: absolute;
-    transform: translateY(-50%);
-    width: calc(100% - #{$beat * 4});
+    position: relative;
   }
 }
 
@@ -216,6 +222,7 @@ img {
 .shapes {
   top: 0;
   z-index: 1;
+  opacity: 0;
   width: 100%;
   height: 100%;
   display: none;
@@ -240,5 +247,11 @@ img {
     left: 50%;
     display: block;
     transform: translateX(-50%);
+  }
+}
+// Scroll-magic loaded
+body.sm-loaded {
+  .shapes {
+    opacity: 1;
   }
 }
