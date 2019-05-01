@@ -416,18 +416,6 @@
       }
 
       .section-art {
-        &::before {
-          content: '';
-          bottom: 0;
-          width: $beat * 5;
-          position: absolute;
-          height: $beat * 2.5;
-          background: color(black);
-          border: 1px solid color(black);
-          border-bottom: transparent;
-          border-radius: #{$beat * 2.5} #{$beat * 2.5} 0 0;
-        }
-
         .pipe {
           left: 91px;
           width: 765.988px;

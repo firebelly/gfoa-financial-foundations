@@ -221,6 +221,20 @@
       }
     }
 
+    .section-art {
+      &::before {
+        content: '';
+        bottom: 100%;
+        width: $beat * 5;
+        position: absolute;
+        height: $beat * 2.5;
+        background: color(black);
+        border: 1px solid color(black);
+        border-bottom: transparent;
+        border-radius: #{$beat * 2.5} #{$beat * 2.5} 0 0;
+      }
+    }
+
     .shapes {
       .top,
       .middle {
@@ -244,7 +258,7 @@
           height: auto;
           width: 802px;
           .foreground {
-            stroke: color(gold);
+            stroke: color(white);
           }
         }
       }
