@@ -406,14 +406,16 @@ body.sm-loaded {
           position: absolute;
         }
 
-        h3:first-of-type {
-          float: right;
-          margin-right: 60px;
-        }
+        .final-takeaway {
+          &:first-of-type {
+            float: right;
+            margin-right: 60px;
+          }
 
-        h3:last-of-type {
-          clear: right;
-          margin-left: $beat * 6;
+          &:last-of-type {
+            clear: right;
+            margin-left: $beat * 6;
+          }
         }
       }
     }
