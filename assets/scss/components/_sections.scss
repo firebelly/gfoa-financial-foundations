@@ -208,19 +208,6 @@
   }
 
   &.section-takeaway {
-    > .sitewrapper:first-of-type::before {
-      z-index: 1;
-      content: '';
-      bottom: 100%;
-      cursor: pointer;
-      width: $beat * 5;
-      position: absolute;
-      height: $beat * 2.5;
-      background: color(black);
-      border: 1px solid color(black);
-      border-bottom: transparent;
-      border-radius: #{$beat * 2.5} #{$beat * 2.5} 0 0;
-    }
 
     h2 {
       @include boxed-text(2);

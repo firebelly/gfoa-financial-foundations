@@ -67,15 +67,16 @@
 
   .pillar-content {
     z-index: 1;
+    padding-top: 20px;
     padding-left: 1px;
     position: relative;
-    padding-top: $beat;
     padding-bottom: $beat;
     @include outlined-box;
 
     h3 {
       margin: 0;
       @include h4;
+      margin-bottom: 2px;
     }
 
     p {
@@ -87,8 +88,12 @@
       }
 
       + * {
-        margin-top: $beat * 2;
+        margin-top: 36px;
       }
+    }
+
+    .pillar-expand {
+      margin-top: 45px;
     }
 
     @include media-md {
@@ -106,6 +111,10 @@
         border-top: 1px solid;
         border-bottom: 1px solid;
         background-color: inherit;
+      }
+
+      .pillar-expand {
+        margin-top: 100px;
       }
     }
   }
@@ -195,6 +204,8 @@
 
     @include media-md {
       padding-top: $beat * 6;
+      padding-bottom: $beat * 10;
+
       .background-grid {
         top: $beat * 14;
       }
@@ -245,6 +256,11 @@
   &.pillar-3 {
     @include media-md {
       padding-top: $beat * 5;
+      padding-bottom: $beat * 6;
+
+      .pillar-expand {
+        margin-top: 41px;
+      }
 
       .background-grid {
         top: $beat * 13;
@@ -322,6 +338,10 @@
       padding-top: $beat * 11;
       padding-bottom: $beat * 7;
 
+      .pillar-expand {
+        margin-top: 47px;
+      }
+
       .background-grid {
         top: $beat * 17;
       }
@@ -395,6 +415,18 @@
       }
 
       .section-art {
+        &::before {
+          content: '';
+          bottom: 0;
+          width: $beat * 5;
+          position: absolute;
+          height: $beat * 2.5;
+          background: color(black);
+          border: 1px solid color(black);
+          border-bottom: transparent;
+          border-radius: #{$beat * 2.5} #{$beat * 2.5} 0 0;
+        }
+
         .pipe {
           left: 91px;
           width: 765.988px;
