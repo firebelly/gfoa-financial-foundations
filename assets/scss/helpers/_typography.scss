@@ -98,7 +98,7 @@
 
 @mixin h4 {
   @include font-copy;
-  @include paragraph-style(22, 32, .05em, 700);
+  @include paragraph-style(22, 32, .005em, 700);
 }
 .h4 {
   @include h4;

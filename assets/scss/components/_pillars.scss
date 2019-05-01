@@ -76,6 +76,7 @@
     h3 {
       margin: 0;
       @include h4;
+      @include smooth;
       margin-bottom: 2px;
     }
 

@@ -550,11 +550,15 @@
 
     .events {
       .section-title {
-        @include h3;
         margin: 0 0 $beat;
         @include boxed-text(2);
         span {
-          line-height: 1.2;
+          line-height: .8;
+          height: ($beat * 2) - 1px;
+          @include media-md {
+            @include h3;
+            line-height: .8;
+          }
         }
       }
 
@@ -571,7 +575,7 @@
         }
 
         .event-title {
-          @include p2;
+          @include h4;
           font-weight: 700;
           color: color(blue);
           margin: 0 0 #{$beat / 4};
@@ -594,13 +598,23 @@
         @include media-md {
           display: flex;
           justify-content: space-between;
+          padding: 32px #{$beat * 2} 32px $beat;
 
           .event-date {
+            flex-grow: 1;
             margin-bottom: 0;
           }
 
+          .event-venue {
+            margin: 0;
+          }
+
           .event-title {
-            margin-bottom: $beat;
+            margin-bottom: 8px;
+          }
+
+          .event-link {
+            margin-left: 32px;
           }
         }
       }
