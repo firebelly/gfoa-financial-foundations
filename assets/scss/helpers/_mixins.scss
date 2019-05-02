@@ -31,21 +31,6 @@
     @content;
   }
 }
-@mixin media-lg() {
-  @media screen and (min-width: $breakpoint-lg) {
-    @content;
-  }
-}
-@mixin media-nav() {
-  @media screen and (min-width: $breakpoint-nav) {
-    @content;
-  }
-}
-@mixin media-xl() {
-  @media screen and (min-width: $breakpoint-xl) {
-    @content;
-  }
-}
 
 // On-the fly media-queries
 @mixin screen($res-min, $res-max) {
@@ -112,8 +97,8 @@
     float: left;
     width: auto;
     position: relative;
+    padding-right: 4px;
     margin: 1px 0 0 1px;
-    padding-right: $beat;
     display: inline-block;
     &::after {
       top: 0;
@@ -128,6 +113,7 @@
     }
 
     @include media-md {
+      padding-right: $beat;
       height: #{($beat * $size) - 1px};
 
       @if $size == 2 {

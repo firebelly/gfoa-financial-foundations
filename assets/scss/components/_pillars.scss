@@ -1,9 +1,12 @@
 // Pillars
 
 .pillar {
-  // overflow: hidden;
   position: relative;
   transition: padding-bottom .2s ease-out;
+
+  @include media-md {
+    padding: #{$beat * 4} 0;
+  }
 
   &.-light {
     @include media-md {
@@ -71,6 +74,7 @@
     padding-top: 20px;
     padding-left: 1px;
     position: relative;
+    margin-top: $beat * 2;
     padding-bottom: $beat;
     @include outlined-box;
 
@@ -96,10 +100,12 @@
 
     .pillar-expand {
       margin-top: 45px;
+      padding-left: $beat / 2;
     }
 
     @include media-md {
       padding-right: 0;
+      width: columns(18);
       margin-top: $beat * 7;
 
       &::before {
@@ -116,23 +122,28 @@
       }
 
       .pillar-expand {
+        padding-left: 0;
         margin-top: 100px;
       }
     }
   }
 
-  @include media-md {
-    padding: #{$beat * 4} 0;
-
-    .pillar-content {
-      width: columns(18);
-    }
-  }
-
   // Individual Pillars
   &.pillar-1 {
+    padding-top: 186px;
+
+    .background-grid {
+      top: 363px;
+    }
+
     @include media-md {
+      padding-top: #{$beat * 4};
       padding-bottom: $beat * 2;
+
+      .pillar-content {
+        margin-top: $beat * 7;
+      }
+
       .background-grid {
         top: $beat * 12;
       }
@@ -187,6 +198,11 @@
 
   &.pillar-2 {
     @include smooth;
+    padding-top: 168px;
+
+    .background-grid {
+      top: 345px;
+    }
 
     header {
       .pillar-label,
@@ -200,6 +216,7 @@
         line-height: 1.1;
       }
     }
+
     .pillar-content {
       @include outlined-box(black);
     }
@@ -256,6 +273,12 @@
   }
 
   &.pillar-3 {
+    padding-top: $beat * 3;
+
+    .background-grid {
+      top: 249px;
+    }
+
     @include media-md {
       padding-top: $beat * 5;
       padding-bottom: $beat * 6;
@@ -319,6 +342,11 @@
 
   &.pillar-4 {
     @include smooth;
+    padding-top: $beat * 3;
+
+    .background-grid {
+      top: 206px;
+    }
 
     header {
       .pillar-label,
@@ -332,6 +360,7 @@
         line-height: 1.1;
       }
     }
+
     .pillar-content {
       @include outlined-box(black);
     }
@@ -346,6 +375,10 @@
 
       .background-grid {
         top: $beat * 17;
+      }
+
+      .pillar-content {
+        margin-top: $beat * 9;
       }
 
       .section-art {
@@ -404,6 +437,12 @@
   }
 
   &.pillar-5 {
+    padding-top: $beat * 4;
+
+    .background-grid {
+      top: 230px;
+    }
+
     @include media-md {
       padding-top: $beat * 7;
       padding-bottom: $beat * 23;
@@ -491,18 +530,11 @@
     .-inner {
       display: none;
       height: $beat * 4;
-      left: columns(23);
-      width: columns(19);
       position: relative;
       color: color(offwhite);
       background-color: color(black);
-      padding: $beat $beat #{$beat * 2} $beat;
-      &.-left {
-        left: -$beat;
-        width: columns(19);
-      }
+      padding: $beat #{$beat / 2} #{$beat * 2} #{$beat / 2};
     }
-
   }
 
   &-content {
@@ -543,6 +575,18 @@
   }
 
   @include media-md {
+    .pillar-close-container {
+      .-inner {
+        left: columns(23);
+        width: columns(19);
+        padding: $beat $beat #{$beat * 2} $beat;
+        &.-left {
+          left: -$beat;
+          width: columns(19);
+        }
+      }
+    }
+
     .expandable-pillar-text {
       width: columns(24);
       padding-right: $beat;

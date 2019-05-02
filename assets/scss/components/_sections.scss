@@ -3,7 +3,7 @@
 // Scroll-magic loaded
 body.sm-loaded {
   .section-art .pipe .foreground,
-  .section.section-5-pillars .section-art #section-one-art #scroll-line {
+  .section.section-5-pillars .section-art .section-one-art .scroll-line {
     opacity: 1;
   }
 }
@@ -20,6 +20,10 @@ body.sm-loaded {
   .pipe {
     top: 0;
     position: absolute;
+    &.-large {
+      display: none;
+    }
+
     path {
       fill: none;
       stroke-width: 10;
@@ -30,6 +34,14 @@ body.sm-loaded {
     }
     .background {
       stroke: color(white);
+    }
+  }
+
+  @include media-md {
+    .pipe {
+      &.-large {
+        display: block;
+      }
     }
   }
 }
@@ -44,6 +56,11 @@ body.sm-loaded {
 
   // Intro Section
   &.section-intro {
+    padding-bottom: 0;
+
+    .background-grid-container {
+      padding-bottom: $beat * 9;
+    }
 
     .logo {
       .logo-mark {
@@ -135,6 +152,7 @@ body.sm-loaded {
         top: 100%;
         left: 50%;
         width: 10px;
+        height: 96px;
         position: absolute;
         margin-top: $beat * 2;
         fill: color(offwhite);
@@ -148,11 +166,19 @@ body.sm-loaded {
       .background-grid-container {
         padding: #{$beat * 5} 0 #{$beat * 9};
       }
+
+      .start {
+        svg {
+          height: 144px;
+        }
+      }
     }
   }
 
   // 5 Pillars Section
   &.section-5-pillars {
+    padding-bottom: 0;
+    padding-top: $beat * 8;
     border-top: 1px solid color(black);
     border-bottom: 1px solid color(black);
 
@@ -173,26 +199,37 @@ body.sm-loaded {
     }
 
     .section-art {
+      position: relative;
       pointer-events: none;
 
       p {
         margin: 0;
         @include p2;
+        right: 36px;
+        bottom: 24px;
         position: absolute;
         color: color(white);
         transform: rotate(90deg);
         transform-origin: bottom right;
       }
 
-      #section-one-art {
+      .section-one-art {
+        width: 216px;
+        display: block;
+        margin: 0 auto;
+
+        &.-large {
+          display: none;
+        }
+
         path {
           fill: none;
         }
         .line-background,
-        #scroll-line {
+        .scroll-line {
           stroke-width: 10px;
         }
-        #scroll-line {
+        .scroll-line {
           opacity: 0;
           stroke: color(black);
         }
@@ -203,6 +240,12 @@ body.sm-loaded {
         .radial-two {
           stroke-width: 1px;
           stroke: color(white);
+        }
+        .radial-one {
+          animation: flash 3s infinite;
+        }
+        .radial-two {
+          animation: flash 3s infinite .5s;
         }
         .dot-background {
           fill: color(white);
@@ -224,31 +267,29 @@ body.sm-loaded {
         width: 100%;
         position: absolute;
 
-        svg {
-          transform: translateY(2px);
-        }
-
         p {
           right: 244px;
           bottom: 464px;
         }
+
+        .section-one-art {
+          right: 23px;
+          bottom: -1px;
+          float: right;
+          width: 217px;
+          height: 851px;
+          position: relative;
+          transform: translateY(2px);
+
+          &.-large {
+            display: block;
+          }
+          &.-small {
+            display: none;
+          }
+        }
       }
 
-      #section-one-art {
-        right: 23px;
-        bottom: -1px;
-        float: right;
-        width: 217px;
-        height: 851px;
-        position: relative;
-
-        .radial-one {
-          animation: flash 3s infinite;
-        }
-        .radial-two {
-          animation: flash 3s infinite .5s;
-        }
-      }
     }
   }
 
@@ -256,10 +297,14 @@ body.sm-loaded {
 
     h2 {
       @include boxed-text(2);
-      margin: 0 0 #{$beat * 5};
+      margin: 0 0 #{$beat * 4};
     }
 
     .-content {
+      h3 {
+        @include h3;
+      }
+
       p {
         margin: 0;
       }
@@ -293,6 +338,12 @@ body.sm-loaded {
       h2 {
         margin-bottom: 128px;
         @include boxed-text(3);
+      }
+
+      .-content {
+        h3 {
+          @include h2;
+        }
       }
 
       .section-art {
@@ -382,19 +433,29 @@ body.sm-loaded {
 
     .-bottom {
       .instructions {
-        margin: 0;
         @include p2;
+        margin: 0 0 $beat;
 
+        svg {
+          fill: color(white);
+        }
+        .icon-arrow-down {
+          width: 10px;
+          height: 48px;
+          display: block;
+          margin-top: 20px;
+          margin-left: 12px;
+        }
         .icon-arrow-right {
           height: 10px;
           width: 181px;
-          fill: color(offwhite);
+          display: none;
         }
       }
 
       .final-takeaway {
         margin: 0;
-        @include boxed-text(3);
+        @include boxed-text(2);
 
         &:last-of-type {
           margin-left: 70px;
@@ -410,16 +471,22 @@ body.sm-loaded {
         position: relative;
 
         .instructions {
+          margin: 0;
           display: flex;
           position: absolute;
+          .icon-arrow-down {
+            display: none;
+          }
           .icon-arrow-right {
             top: 6px;
+            display: block;
             position: relative;
             margin-left: $beat * 2;
           }
         }
 
         .final-takeaway {
+          @include boxed-text(3);
           &:first-of-type {
             float: right;
             margin-right: 60px;
@@ -506,18 +573,24 @@ body.sm-loaded {
 
     // Book
     .book {
+      .background-grid {
+        display: none;
+      }
+
       h3 {
         margin-bottom: 8px;
       }
 
       .-left {
-        padding-bottom: $beat * 2;
+        .image {
+          padding-bottom: 72%;
+          margin-bottom: $beat;
+        }
       }
 
       .text {
         padding-left: 1px;
         padding-bottom: 18px;
-        margin-bottom: $beat * 2;
         p {
           margin-bottom: 10px;
           br {
@@ -527,24 +600,36 @@ body.sm-loaded {
       }
 
       .cta {
-        display: flex;
-        padding: 0 $beat * 2;
-        justify-content: space-between;
         .button {
           width: 100%;
-          margin-right: $beat;
           &:not(.download) {
             padding-left: 0px;
             padding-right: 0px;
           }
           + .button {
-            margin-right: 0;
+            margin-top: $beat;
           }
         }
       }
 
+      .image {
+        @include outlined-box(white);
+        background: url('../images/book.jpg') center;
+        background-size: cover;
+
+        &.-right {
+          display: none;
+        }
+      }
+
       @include media-md {
+        .background-grid {
+          display: block;
+        }
+
         .text {
+          margin-bottom: $beat * 2;
+
           p {
             br {
               display: block;
@@ -552,24 +637,43 @@ body.sm-loaded {
           }
         }
 
+        .cta {
+          display: flex;
+          padding: 0 $beat * 2;
+          justify-content: space-between;
+
+          .button {
+            margin-right: $beat;
+
+            + .button {
+              margin-top: 0;
+              margin-right: 0;
+            }
+          }
+        }
+
         .-left {
           width: columns(24);
           flex-basis: columns(24);
+          padding-bottom: $beat * 2;
+          .image {
+            display: none;
+          }
         }
-        .-right {
+        .image.-right {
+          display: block;
           width: columns(17);
           flex-basis: columns(17);
-          @include outlined-box(white);
-          background: url('../images/book.jpg') center;
-          background-size: cover;
         }
       }
     }
 
     // Next Steps
     .next-steps {
-      > .sitewrapper > .grid:first-of-type {
-        margin-bottom: $beat * 3;
+      @include media-md {
+        > .sitewrapper > .grid:first-of-type {
+          margin-bottom: $beat * 3;
+        }
       }
 
       .next-step {
@@ -590,30 +694,48 @@ body.sm-loaded {
       .cta {
         display: flex;
         position: relative;
-        padding: #{$beat * 3} #{$beat * 2};
-
-        svg {
-          left: $beat;
-          width: 258px;
-          height: 37px;
-          top: $beat / 2;
-          position: absolute;
-          #line {
-            fill: none;
-            stroke: color(black);
-          }
-          #arrowhead {
-            fill: color(black);
-          }
-        }
+        padding: #{$beat * 2} $beat;
 
         a {
           margin: auto 0;
         }
 
+        &.-bottom {
+          padding-top: 0;
+          display: block;
+
+          .icon-bent-arrow {
+            left: $beat;
+            width: 258px;
+            height: 37px;
+            display: none;
+            top: $beat / 2;
+            position: absolute;
+            #line {
+              fill: none;
+              stroke: color(black);
+            }
+            #arrowhead {
+              fill: color(black);
+            }
+          }
+          .icon-arrow-down {
+            width: 10px;
+            height: 48px;
+            display: block;
+            fill: color(black);
+            margin: #{$beat / 2} auto $beat;
+          }
+
+          .button {
+            display: block;
+          }
+        }
+
         @include media-md {
           width: columns(18);
           flex-basis: columns(18);
+          padding: #{$beat * 3} #{$beat * 2};
 
           a {
             width: $beat * 9;
@@ -622,10 +744,19 @@ body.sm-loaded {
           }
 
           &.-bottom {
+            display: flex;
             width: columns(18);
+            padding-top: $beat * 3;
             flex-basis: columns(18);
             padding-right: $beat * 2;
             justify-content: flex-end;
+
+            .icon-bent-arrow {
+              display: block;
+            }
+            .icon-arrow-down {
+              display: none;
+            }
           }
         }
       }
@@ -633,8 +764,8 @@ body.sm-loaded {
 
     .events {
       .section-title {
-        margin: 0 0 $beat;
         @include boxed-text(2);
+        margin: 0 0 #{$beat * 2};
         span {
           line-height: .8;
           height: ($beat * 2) - 1px;
@@ -642,6 +773,10 @@ body.sm-loaded {
             @include h3;
             line-height: .8;
           }
+        }
+
+        @include media-md {
+          margin-bottom: $beat;
         }
       }
 
@@ -676,6 +811,10 @@ body.sm-loaded {
 
         .event-link {
           margin: 0;
+
+          a {
+            display: block;
+          }
         }
 
         @include media-md {

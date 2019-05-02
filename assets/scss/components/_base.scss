@@ -63,9 +63,10 @@ img {
   position: relative;
   @include clearfix();
   padding: 0 $padding-sm;
-  max-width: $sitewrapper;
+  max-width: $breakpoint-sm;
   @include media-md {
     padding: 0 $padding-lg;
+    max-width: $sitewrapper;
   }
 }
 
@@ -147,8 +148,12 @@ img {
   height: 100%;
   position: absolute;
   pointer-events: none;
-  max-width: $sitewrapper;
+  max-width: $breakpoint-sm;
   transform: translateX(-50%);
+
+  @include media-md {
+    max-width: $sitewrapper;
+  }
 
   .-inner {
     top: 0;

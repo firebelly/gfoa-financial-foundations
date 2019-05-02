@@ -106,38 +106,6 @@ $column-width: 100% / $columns;
   }
 }
 
-@include media-lg {
-  .grid-item {
-    flex-basis: auto;
-  }
-  .lg-one-fourth {
-    max-width: 25%;
-    flex-basis: 25%;
-  }
-  .lg-one-third {
-    flex-basis: 33.3333333%;
-    max-width: 33.3333333%;
-  }
-  .lg-one-half {
-    flex-basis: 50%;
-    max-width: 50%;
-  }
-  .lg-two-thirds {
-    flex-basis: 66.6666667%;
-    max-width: 66.6666667%;
-  }
-  .lg-three-fourths {
-    flex-basis: 75%;
-    max-width: 75%;
-  }
-  // Order classes
-  @for $i from 0 through 6 {
-    .lg-order-#{$i} {
-      order: $i;
-    }
-  }
-}
-
 // This allows js to determine breakpoint
 #breakpoint-indicator {
   width: 0;
@@ -152,15 +120,6 @@ $column-width: 100% / $columns;
     }
     @include media-md {
       content: 'md';
-    }
-    @include media-lg {
-      content: 'lg';
-    }
-    @include media-xl {
-      content: 'xl';
-    }
-    @include media-nav {
-      content: 'nav';
     }
   }
 }

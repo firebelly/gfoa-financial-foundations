@@ -7,13 +7,17 @@
   position: relative;
   text-align: center;
   border-radius: 10px;
-  padding: 0 $beat * 3;
+  padding: 0 $beat * 2;
   text-decoration: none;
   display: inline-block;
   line-height: $beat * 2;
   background-color: color(white);
   border: 1px solid color(black);
   box-shadow: 0 4px 0 color(black);
+
+  @include media-md {
+    padding: 0 $beat * 3;
+  }
 
   &:hover {
     top: -2px;
@@ -126,13 +130,22 @@ button.close {
 // Pillar expand/close
 .pillar-expand,
 .pillar-close {
-  @include p;
+  @include p2;
   cursor: pointer;
   font-style: italic;
   @extend .button-reset;
   .button {
-    margin-right: $beat;
     vertical-align: middle;
+    margin-right: $beat / 3;
+  }
+
+  @include media-md {
+    @include p;
+    font-style: italic;
+
+    .button {
+      margin-right: $beat;
+    }
   }
 }
 
