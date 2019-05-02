@@ -301,9 +301,10 @@ body.sm-loaded {
 
     .bump-container {
       top: 0;
-      left: 0;
+      left: 50%;
       width: 100%;
       position: absolute;
+      transform: translateX(-50%);
       .bump {
         left: -6px;
         content: '';
@@ -357,6 +358,12 @@ body.sm-loaded {
     @include media-md {
       padding-top: 155px;
       padding-bottom: $beat * 18;
+
+      .bump-container {
+        .bump {
+          left:  $beat * 6;
+        }
+      }
 
       h2 {
         margin-bottom: 128px;
