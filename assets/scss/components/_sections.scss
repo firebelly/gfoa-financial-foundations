@@ -571,6 +571,10 @@ body.sm-loaded {
       }
     }
 
+    .background-grid {
+      height: 100%;
+    }
+
     .section-title {
       margin: 0;
       @include h1;
