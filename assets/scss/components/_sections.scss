@@ -143,6 +143,10 @@ body.sm-loaded {
       .background-grid-container {
         padding: #{$beat * 5} 0 #{$beat * 9};
       }
+
+      .logo {
+        margin-left: 0;
+      }
     }
 
     @media screen and (min-width: $breakpoint-md) and (max-height: 660px) {

@@ -245,8 +245,8 @@
     }
 
     @include media-md {
+      padding-bottom: 237px;
       padding-top: $beat * 6;
-      padding-bottom: $beat * 10;
 
       .background-grid {
         top: $beat * 14;
@@ -318,8 +318,8 @@
     }
 
     @include media-md {
+      padding-bottom: 183px;
       padding-top: $beat * 5;
-      padding-bottom: $beat * 6;
 
       .pillar-expand {
         margin-top: 41px;
@@ -419,8 +419,8 @@
     }
 
     @include media-md {
+      padding-bottom: 227px;
       padding-top: $beat * 11;
-      padding-bottom: $beat * 7;
 
       .pillar-expand {
         margin-top: 47px;

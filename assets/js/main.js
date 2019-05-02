@@ -54,13 +54,12 @@ var Main = (function($) {
 
     // Init functions
     _initFlashBar();
-    _initStartButton();
+    _initPageAnchorFunctions();
     _backgroundGrid();
     _initExpandingPillars();
     // Pillar Heights
     _updatePillarScenes();
     _initPillarNav();
-    _initScrollMagic();
 
     // Esc handlers
     $(document).keyup(function(e) {
@@ -76,7 +75,7 @@ var Main = (function($) {
   function _scrollBody(element, offset) {
     if (!breakpoint_md && typeof offset !== "undefined" && offset !== null) {
       offset = $('#pillar-nav').outerHeight();
-    } else {
+    } else if (typeof offset === "undefined" && offset === null) {
       offset = 0;
     }
 
@@ -105,9 +104,15 @@ var Main = (function($) {
     });
   }
 
-  function _initStartButton() {
+  function _initPageAnchorFunctions() {
     $startButton.on('click', function() {
       _scrollBody($('#five-pillars'));
+    });
+
+    $('#pillar-nav .secondary a, .resources-link').on('click', function(e) {
+      e.preventDefault();
+      var $target = $($(this).attr('href'));
+      _scrollBody($target, 72);
     });
   }
 
@@ -155,6 +160,8 @@ var Main = (function($) {
           layRows(r);
         }
       }
+
+      $(this).addClass('-loaded');
     });
   }
 
@@ -268,7 +275,7 @@ var Main = (function($) {
     });
 
     // Smooth scroll to section
-    $pillarNav.on('click', 'ul a', function(e) {
+    $pillarNav.on('click', '.primary a', function(e) {
       e.preventDefault();
       var $target = $($(this).attr('href'));
       _scrollBody($target, true);
@@ -325,13 +332,6 @@ var Main = (function($) {
     $el.css("stroke-dashoffset", lineLength);
   }
 
-  function _initScrollMagic() {
-
-
-    // Add scroll-magic class to body to show hidden elements
-    $body.addClass('sm-loaded');
-  }
-
   function _smallScrollMagic() {
     if (!breakpoint_md) {
       // 5 Pillars intro section
@@ -384,6 +384,9 @@ var Main = (function($) {
       var takeawayScene = new ScrollMagic.Scene({triggerElement: ".section-takeaway", duration: $('.section-takeaway .pipe.-small').outerHeight(), tweenChanges: true})
               .setTween(takeawayTween)
               .addTo(controller);
+
+      // Add scroll-magic class to body to show hidden elements
+      $body.addClass('sm-loaded');
     }
   }
 
@@ -461,6 +464,9 @@ var Main = (function($) {
       takeawayScene.on('end', function() {
         $('.section-takeaway .section-art').toggleClass('-complete');
       });
+
+      // Add scroll-magic class to body to show hidden elements
+      $body.addClass('sm-loaded');
     }
   }
 
