@@ -39,6 +39,9 @@ body.sm-loaded {
 
   @include media-md {
     .pipe {
+      &.-small {
+        display: none;
+      }
       &.-large {
         display: block;
       }
@@ -296,6 +299,25 @@ body.sm-loaded {
   &.section-takeaway {
     padding-top: 88px;
 
+    .bump-container {
+      top: 0;
+      left: 0;
+      width: 100%;
+      position: absolute;
+      .bump {
+        left: -6px;
+        content: '';
+        bottom: 100%;
+        width: $beat * 5;
+        position: absolute;
+        height: $beat * 2.5;
+        background: color(black);
+        border: 1px solid color(black);
+        border-bottom: transparent;
+        border-radius: #{$beat * 2.5} #{$beat * 2.5} 0 0;
+      }
+    }
+
     h2 {
       @include boxed-text(3);
       margin: 0 0 #{$beat * 4};
@@ -312,19 +334,6 @@ body.sm-loaded {
     }
 
     .section-art {
-      &::before {
-        left: -6px;
-        content: '';
-        bottom: 100%;
-        width: $beat * 5;
-        position: absolute;
-        height: $beat * 2.5;
-        background: color(black);
-        border: 1px solid color(black);
-        border-bottom: transparent;
-        border-radius: #{$beat * 2.5} #{$beat * 2.5} 0 0;
-      }
-
       .pipe {
         .foreground {
           stroke: color(white);
