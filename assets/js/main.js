@@ -138,27 +138,11 @@ var Main = (function($) {
       }
 
       for (var c = 0; c <= columns; c++) {
-        if (stagger === true) {
-          (function(c) {
-            setTimeout(function () {
-              layColumns(c);
-            }, 0.25 * c * 100);
-          })(c);
-        } else {
-          layColumns(c);
-        }
+        layColumns(c);
       }
 
       for (var r = 0; r <= rows; r++) {
-        if (stagger === true) {
-          (function(r) {
-            setTimeout(function () {
-              layRows(r);
-            }, 0.25 * r * 100);
-          })(r);
-        } else {
-          layRows(r);
-        }
+        layRows(r);
       }
 
       $(this).addClass('-loaded');
@@ -335,55 +319,61 @@ var Main = (function($) {
   function _smallScrollMagic() {
     if (!breakpoint_md) {
       // 5 Pillars intro section
-      var $line = $(".section-one-art.-small path.scroll-line");
-      var $dot = $(".section-one-art.-small circle.scroll-dot");
-
-      // prepare SVG
-      _pathPrepare($line);
-
-      // build tween
-      var tween = new TimelineMax()
-        .add(TweenMax.to($dot, .1, {attr:{r:12}, ease:Linear.easeNone}))
-        .add(TweenMax.to($line, .1, {strokeDashoffset: 0, ease:Linear.easeNone}));
-
-      // build scene
-      var introScene = new ScrollMagic.Scene({triggerElement: ".section-one-art.-small", duration: $('.section-one-art.-small').outerHeight(), tweenChanges: true})
-              .setTween(tween)
-              .addTo(controller);
-
-      // Pipes
-      var pipes = $('.pillar svg.pipe.-small');
-      for (var p = 0; p < pipes.length; p++) {
-        var $section = pipes.eq(p).closest('.pillar');
-        var $pipe = pipes.eq(p).find('path.foreground');
+      (function() {
+        var $line = $(".section-one-art.-small path.scroll-line");
+        var $dot = $(".section-one-art.-small circle.scroll-dot");
 
         // prepare SVG
-        _pathPrepare($pipe);
+        _pathPrepare($line);
 
         // build tween
-        var pipeTween = new TimelineMax()
-          .add(TweenMax.to($pipe, .1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+        var tween = new TimelineMax()
+          .add(TweenMax.to($dot, 0.1, {attr:{r:12}, ease:Linear.easeNone}))
+          .add(TweenMax.to($line, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}));
 
         // build scene
-        new ScrollMagic.Scene({triggerElement: $section[0], duration: $section.outerHeight()})
-            .setTween(pipeTween)
-            .addTo(controller);
-      }
+        var introScene = new ScrollMagic.Scene({triggerElement: ".section-one-art.-small", duration: $('.section-one-art.-small').outerHeight(), tweenChanges: true})
+                .setTween(tween)
+                .addTo(controller);
+      })();
+
+      // Pipes
+      (function() {
+        var pipes = $('.pillar svg.pipe.-small');
+        for (var p = 0; p < pipes.length; p++) {
+          var $section = pipes.eq(p).closest('.pillar');
+          var $pipe = pipes.eq(p).find('path.foreground');
+
+          // prepare SVG
+          _pathPrepare($pipe);
+
+          // build tween
+          var pipeTween = new TimelineMax()
+            .add(TweenMax.to($pipe, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+
+          // build scene
+          new ScrollMagic.Scene({triggerElement: $section[0], duration: $section.outerHeight()})
+              .setTween(pipeTween)
+              .addTo(controller);
+        }
+      })();
 
       // Takeaway Section
-      var $takeawayPipe = $(".section-takeaway .pipe.-small path.foreground");
+      (function() {
+        var $takeawayPipe = $(".section-takeaway .pipe.-small path.foreground");
 
-      // prepare SVG
-      _pathPrepare($takeawayPipe);
+        // prepare SVG
+        _pathPrepare($takeawayPipe);
 
-      // build tween
-      var takeawayTween = new TimelineMax()
-        .add(TweenMax.to($takeawayPipe, .1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+        // build tween
+        var takeawayTween = new TimelineMax()
+          .add(TweenMax.to($takeawayPipe, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}));
 
-      // build scene
-      var takeawayScene = new ScrollMagic.Scene({triggerElement: ".section-takeaway", duration: $('.section-takeaway .pipe.-small').outerHeight(), tweenChanges: true})
-              .setTween(takeawayTween)
-              .addTo(controller);
+        // build scene
+        var takeawayScene = new ScrollMagic.Scene({triggerElement: ".section-takeaway", duration: $('.section-takeaway .pipe.-small').outerHeight(), tweenChanges: true})
+                .setTween(takeawayTween)
+                .addTo(controller);
+      })();
 
       // Add scroll-magic class to body to show hidden elements
       $body.addClass('sm-loaded');
@@ -393,77 +383,85 @@ var Main = (function($) {
   function _largeScrollMagic() {
     if (breakpoint_md) {
       // 5 Pillars intro section
-      var $line = $(".section-one-art.-large path.scroll-line");
-      var $dot = $(".section-one-art.-large circle.scroll-dot");
-
-      // prepare SVG
-      _pathPrepare($line);
-
-      // build tween
-      var tween = new TimelineMax()
-        .add(TweenMax.to($dot, .1, {attr:{r:12}, ease:Linear.easeNone}))
-        .add(TweenMax.to($line, .1, {strokeDashoffset: 0, ease:Linear.easeNone}));
-
-      // build scene
-      var introScene = new ScrollMagic.Scene({triggerElement: ".section-one-art.-large", duration: $('.section-one-art.-large').outerHeight(), tweenChanges: true})
-              .setTween(tween)
-              .addTo(controller);
-
-      // Parallax Shapes
-      var shapes = $('.shapes');
-      for (var s = 0; s < shapes.length; s++) {
-        var $section = shapes.eq(s).closest('section');
-        // build tween
-        var shapesTween = new TimelineMax ()
-          .add([
-            TweenMax.fromTo($section.find('.shapes svg.fast'), 1, {yPercent: 15}, {yPercent: -15, ease: Linear.easeNone}),
-            TweenMax.fromTo($section.find('.shapes svg.slow'), 1, {yPercent: 35}, {yPercent: -35, ease: Linear.easeNone}),
-            TweenMax.fromTo($section.find('.shapes svg.very-fast'), 1, {yPercent: 55}, {yPercent: -55, ease: Linear.easeNone})
-          ]);
-
-        // build scene
-        new ScrollMagic.Scene({triggerElement: $section[0], duration: $section.outerHeight() * 1.5})
-            .setTween(shapesTween)
-            .addTo(controller);
-      }
-
-      // Pipes
-      var pipes = $('.pillar svg.pipe.-large');
-      for (var p = 0; p < pipes.length; p++) {
-        var $section = pipes.eq(p).closest('.pillar');
-        var $pipe = pipes.eq(p).find('path.foreground');
+      (function() {
+        var $line = $(".section-one-art.-large path.scroll-line");
+        var $dot = $(".section-one-art.-large circle.scroll-dot");
 
         // prepare SVG
-        _pathPrepare($pipe);
+        _pathPrepare($line);
 
         // build tween
-        var pipeTween = new TimelineMax()
-          .add(TweenMax.to($pipe, .1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+        var tween = new TimelineMax()
+          .add(TweenMax.to($dot, 0.1, {attr:{r:12}, ease:Linear.easeNone}))
+          .add(TweenMax.to($line, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}));
 
         // build scene
-        new ScrollMagic.Scene({triggerElement: $section[0], duration: $section.outerHeight()})
-            .setTween(pipeTween)
-            .addTo(controller);
-      }
+        var introScene = new ScrollMagic.Scene({triggerElement: ".section-one-art.-large", duration: $('.section-one-art.-large').outerHeight(), tweenChanges: true})
+                .setTween(tween)
+                .addTo(controller);
+      })();
+
+      // Parallax Shapes
+      (function() {
+        var shapes = $('.shapes');
+        for (var s = 0; s < shapes.length; s++) {
+          var $section = shapes.eq(s).closest('section');
+          // build tween
+          var shapesTween = new TimelineMax ()
+            .add([
+              TweenMax.fromTo($section.find('.shapes svg.fast'), 1, {yPercent: 15}, {yPercent: -15, ease: Linear.easeNone}),
+              TweenMax.fromTo($section.find('.shapes svg.slow'), 1, {yPercent: 35}, {yPercent: -35, ease: Linear.easeNone}),
+              TweenMax.fromTo($section.find('.shapes svg.very-fast'), 1, {yPercent: 55}, {yPercent: -55, ease: Linear.easeNone})
+            ]);
+
+          // build scene
+          new ScrollMagic.Scene({triggerElement: $section[0], duration: $section.outerHeight() * 1.5})
+              .setTween(shapesTween)
+              .addTo(controller);
+        }
+      })();
+
+      // Pipes
+      (function() {
+        var pipes = $('.pillar svg.pipe.-large');
+        for (var p = 0; p < pipes.length; p++) {
+          var $section = pipes.eq(p).closest('.pillar');
+          var $pipe = pipes.eq(p).find('path.foreground');
+
+          // prepare SVG
+          _pathPrepare($pipe);
+
+          // build tween
+          var pipeTween = new TimelineMax()
+            .add(TweenMax.to($pipe, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+
+          // build scene
+          new ScrollMagic.Scene({triggerElement: $section[0], duration: $section.outerHeight()})
+              .setTween(pipeTween)
+              .addTo(controller);
+        }
+      })();
 
       // Takeaway Section
-      var $takeawayPipe = $(".section-takeaway .pipe.-large path.foreground");
+      (function() {
+        var $takeawayPipe = $(".section-takeaway .pipe.-large path.foreground");
 
-      // prepare SVG
-      _pathPrepare($takeawayPipe);
+        // prepare SVG
+        _pathPrepare($takeawayPipe);
 
-      // build tween
-      var takeawayTween = new TimelineMax()
-        .add(TweenMax.to($takeawayPipe, .1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+        // build tween
+        var takeawayTween = new TimelineMax()
+          .add(TweenMax.to($takeawayPipe, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}));
 
-      // build scene
-      var takeawayScene = new ScrollMagic.Scene({triggerElement: ".section-takeaway", offset: -40, duration: $('.section-takeaway .pipe.-large').outerHeight(), tweenChanges: true})
-              .setTween(takeawayTween)
-              .addTo(controller);
+        // build scene
+        var takeawayScene = new ScrollMagic.Scene({triggerElement: ".section-takeaway", offset: -40, duration: $('.section-takeaway .pipe.-large').outerHeight(), tweenChanges: true})
+                .setTween(takeawayTween)
+                .addTo(controller);
 
-      takeawayScene.on('end', function() {
-        $('.section-takeaway .section-art').toggleClass('-complete');
-      });
+        takeawayScene.on('end', function() {
+          $('.section-takeaway .section-art').toggleClass('-complete');
+        });
+      })();
 
       // Add scroll-magic class to body to show hidden elements
       $body.addClass('sm-loaded');
