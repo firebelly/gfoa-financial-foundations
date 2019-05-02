@@ -59,13 +59,23 @@ body.sm-loaded {
 
   // Intro Section
   &.section-intro {
+    height: 100vh;
+    padding-top: 60px;
+    min-height: 540px;
+    max-height: 800px;
     padding-bottom: 0;
 
     .background-grid-container {
+      height: 100%;
+      padding-top: $beat * 4;
       padding-bottom: $beat * 9;
+      .background-grid {
+        height: 100%;
+      }
     }
 
     .logo {
+      margin-left: -16px;
       .logo-mark {
         border: 1px solid color(white);
         svg {
@@ -125,54 +135,75 @@ body.sm-loaded {
       }
     }
 
-    .start {
-      @extend .button-reset;
-      z-index: 1;
-      padding: 0;
-      cursor: pointer;
-      width: $beat * 5;
-      position: absolute;
-      color: color(white);
-      height: $beat * 2.5;
-      background: color(green);
-      bottom: #{(-$beat * 9) - 1px};
-      border: 1px solid color(black);
-      border-bottom: transparent;
-      border-radius: #{$beat * 2.5} #{$beat * 2.5} 0 0;
-
-      span {
-        left: 50%;
-        @include h5;
-        @include smooth;
-        font-style: normal;
-        position: absolute;
-        bottom: #{$beat - 5px};
-        transform: translateX(-50%);
-        @extend .inline-link;
-      }
-
-      svg {
-        top: 100%;
-        left: 50%;
-        width: 10px;
-        height: 96px;
-        position: absolute;
-        margin-top: $beat * 2;
-        fill: color(offwhite);
-        transform: translateX(-50%);
-      }
-    }
-
     @include media-md {
+      min-height: 588px;
+      max-height: 792px;
       padding: #{$beat * 3} 0 0;
 
       .background-grid-container {
         padding: #{$beat * 5} 0 #{$beat * 9};
       }
+    }
+
+    @media screen and (min-width: $breakpoint-md) and (max-height: 660px) {
+      padding: #{$beat * 2} 0 0;
+
+      .background-grid-container {
+        padding: #{$beat * 3} 0;
+      }
+    }
+
+    .start-button-container {
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      position: absolute;
 
       .start {
+        @extend .button-reset;
+        left: 0;
+        z-index: 1;
+        padding: 0;
+        bottom:  -1px;
+        cursor: pointer;
+        width: $beat * 5;
+        position: absolute;
+        color: color(white);
+        height: $beat * 2.5;
+        background: color(green);
+        border: 1px solid color(black);
+        border-bottom: transparent;
+        border-radius: #{$beat * 2.5} #{$beat * 2.5} 0 0;
+
+        span {
+          left: 50%;
+          @include h5;
+          @include smooth;
+          font-style: normal;
+          position: absolute;
+          bottom: #{$beat - 5px};
+          transform: translateX(-50%);
+          @extend .inline-link;
+        }
+
         svg {
-          height: 144px;
+          top: 100%;
+          left: 50%;
+          width: 10px;
+          height: 96px;
+          position: absolute;
+          margin-top: $beat * 2;
+          fill: color(offwhite);
+          transform: translateX(-50%);
+        }
+      }
+
+      @include media-md {
+        .start {
+          left: $beat * 6;
+          svg {
+            height: 144px;
+          }
         }
       }
     }
