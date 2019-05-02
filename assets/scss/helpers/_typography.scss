@@ -120,7 +120,11 @@
 
 @mixin p {
   @include font-copy;
-  @include paragraph-style(22, 30, 0, normal);
+  @include paragraph-style(18, 24, .01em, normal);
+
+  @include media-md {
+    @include paragraph-style(22, 30, 0, normal);
+  }
 }
 .p {
   @include p;

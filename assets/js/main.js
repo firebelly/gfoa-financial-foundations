@@ -371,6 +371,24 @@ var Main = (function($) {
             .setTween(pipeTween)
             .addTo(controller);
       }
+
+      // Takeaway Section
+      var $takeawayPipe = $(".section-takeaway .pipe.-small path.foreground");
+
+      // prepare SVG
+      _pathPrepare($takeawayPipe);
+
+      // build tween
+      var takeawayTween = new TimelineMax()
+        .add(TweenMax.to($takeawayPipe, .1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+
+      // build scene
+      var takeawayScene = new ScrollMagic.Scene({triggerElement: ".section-takeaway", duration: $('.section-takeaway .pipe.-small').outerHeight(), tweenChanges: true})
+              .setTween(takeawayTween)
+              .addTo(controller);
+      takeawayScene.on('end', function() {
+        $('.final-takeaway').toggleClass('highlight');
+      });
     }
   }
 

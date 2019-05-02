@@ -60,7 +60,7 @@
 
     .pillar-tagline {
       margin: 0;
-      @include p;
+      @include paragraph-style(22, 30, 0, normal);
       font-style: italic;
       @include boxed-text(1);
       span {
@@ -71,12 +71,10 @@
 
   .pillar-content {
     z-index: 1;
-    padding-top: 20px;
-    padding-left: 1px;
     position: relative;
     margin-top: $beat * 2;
-    padding-bottom: $beat;
     @include outlined-box;
+    padding: 20px 18px $beat;
 
     h3 {
       margin: 0;
@@ -100,7 +98,7 @@
 
     .pillar-expand {
       margin-top: 45px;
-      padding-left: $beat / 2;
+      margin-left: -6px;
     }
 
     @include media-md {
@@ -130,10 +128,25 @@
 
   // Individual Pillars
   &.pillar-1 {
-    padding-top: 186px;
+    padding-top: 182px;
 
     .background-grid {
       top: 363px;
+      bottom: $beat;
+    }
+
+    .section-art {
+      .pipe.-small {
+        top: 0;
+        left: 35px;
+        width: 130px;
+      }
+    }
+
+    .pillar-content {
+      .pillar-expand {
+        margin-top: 45px;
+      }
     }
 
     @include media-md {
@@ -149,7 +162,7 @@
       }
 
       .section-art {
-        .pipe {
+        .pipe.-large {
           right: 270px;
           width: 964.9px;
         }
@@ -199,9 +212,18 @@
   &.pillar-2 {
     @include smooth;
     padding-top: 168px;
+    padding-bottom: $beat * 6;
 
     .background-grid {
       top: 345px;
+      bottom: $beat * 2;
+    }
+
+    .section-art {
+      .pipe.-small {
+        left: 35px;
+        width: 107px;
+      }
     }
 
     header {
@@ -218,6 +240,7 @@
     }
 
     .pillar-content {
+      padding-bottom: 36px;
       @include outlined-box(black);
     }
 
@@ -230,7 +253,7 @@
       }
 
       .section-art {
-        .pipe {
+        .pipe.-large {
           right: 270px;
           width: 562.849px;
         }
@@ -274,9 +297,24 @@
 
   &.pillar-3 {
     padding-top: $beat * 3;
+    padding-bottom: $beat * 7;
 
     .background-grid {
       top: 249px;
+      bottom: $beat * 5;
+    }
+
+    .section-art {
+      .pipe.-small {
+        left: 132px;
+        width: 10px;
+      }
+    }
+
+    .pillar-content {
+      .pillar-expand {
+        margin-top: 26px;
+      }
     }
 
     @include media-md {
@@ -292,7 +330,7 @@
       }
 
       .section-art {
-        .pipe {
+        .pipe.-large {
           left: 199px;
           width: 802.64px;
         }
@@ -343,9 +381,24 @@
   &.pillar-4 {
     @include smooth;
     padding-top: $beat * 3;
+    padding-bottom: $beat * 7;
 
     .background-grid {
       top: 206px;
+      bottom: $beat * 5;
+    }
+
+    .section-art {
+      .pipe.-small {
+        left: 48px;
+        width: 94px;
+      }
+    }
+
+    .pillar-content {
+      .pillar-expand {
+        margin-top: 39px;
+      }
     }
 
     header {
@@ -382,7 +435,7 @@
       }
 
       .section-art {
-        .pipe {
+        .pipe.-large {
           left: 91px;
           width: 910.628px;
         }
@@ -437,11 +490,23 @@
   }
 
   &.pillar-5 {
-    padding-bottom: 228px;
     padding-top: $beat * 4;
+    padding-bottom: $beat * 9;
 
     .background-grid {
       top: 230px;
+      bottom: $beat * 7;
+    }
+
+    .section-art {
+      .pipe.-small {
+        left: 48px;
+        width: 10px;
+      }
+    }
+
+    .pillar-content {
+      padding-bottom: 29px;
     }
 
     @include media-md {
@@ -457,7 +522,7 @@
       }
 
       .section-art {
-        .pipe {
+        .pipe.-large {
           left: 91px;
           width: 765.988px;
         }
