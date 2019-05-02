@@ -375,6 +375,39 @@ var Main = (function($) {
                 .addTo(controller);
       })();
 
+      // Final Takeaway
+      (function() {
+        var finalTakeaways = $('.final-takeaway span:not(.final)');
+
+        for (var f = 0; f < finalTakeaways.length; f++) {
+          var $takeaway = finalTakeaways.eq(f);
+          // build tween
+          var tl = new TimelineMax();
+          tl.to($takeaway, 1,
+            {color: "#a98352"}
+          );
+          tl.to($takeaway, 1,
+            {color: "#fff"}
+          );
+
+          // build scene
+          var takeawayScene = new ScrollMagic.Scene({triggerElement: $takeaway[0], offset: -40, duration: 300, tweenChanges: true})
+                  .setTween(tl)
+                  .addTo(controller);
+        }
+      })();
+
+      (function() {
+        var $final = $('.final-takeaway span.final');
+        var finalTween = new TimelineMax()
+          .add(TweenMax.to($final, 1, {color: '#67c18c'}));
+
+        // build scene
+        var finalScene = new ScrollMagic.Scene({triggerElement: $final[0], offset: -200, duration: 300, tweenChanges: true})
+                .setTween(finalTween)
+                .addTo(controller);
+      })();
+
       // Add scroll-magic class to body to show hidden elements
       $body.addClass('sm-loaded');
     }
@@ -461,6 +494,39 @@ var Main = (function($) {
         takeawayScene.on('end', function() {
           $('.section-takeaway .section-art').toggleClass('-complete');
         });
+      })();
+
+      // Final Takeaway
+      (function() {
+        var finalTakeaways = $('.final-takeaway span:not(.final)');
+
+        for (var f = 0; f < finalTakeaways.length; f++) {
+          var $takeaway = finalTakeaways.eq(f);
+          // build tween
+          var tl = new TimelineMax();
+          tl.to($takeaway, 1,
+            {color: "#a98352"}
+          );
+          tl.to($takeaway, 1,
+            {color: "#fff"}
+          );
+
+          // build scene
+          var takeawayScene = new ScrollMagic.Scene({triggerElement: $takeaway[0], offset: -40, duration: 300, tweenChanges: true})
+                  .setTween(tl)
+                  .addTo(controller);
+        }
+      })();
+
+      (function() {
+        var $final = $('.final-takeaway span.final');
+        var finalTween = new TimelineMax()
+          .add(TweenMax.to($final, 1, {color: '#67c18c'}));
+
+        // build scene
+        var finalScene = new ScrollMagic.Scene({triggerElement: $final[0], offset: -200, duration: 300, tweenChanges: true})
+                .setTween(finalTween)
+                .addTo(controller);
       })();
 
       // Add scroll-magic class to body to show hidden elements
