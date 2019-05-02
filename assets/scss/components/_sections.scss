@@ -333,6 +333,7 @@ body.sm-loaded {
 
   &.section-takeaway {
     padding-top: 88px;
+    padding-bottom: $beat * 9;
 
     .bump-container {
       top: 0;
@@ -408,6 +409,13 @@ body.sm-loaded {
     }
 
     .shapes {
+        left: 50%;
+        transform: translateX(-50%);
+
+      .-small {
+        bottom: -123px;
+      }
+
       .top,
       .middle {
         stroke: color(offwhite);
