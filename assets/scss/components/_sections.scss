@@ -335,15 +335,39 @@ body.sm-loaded {
     }
 
     .section-art {
+      top: -60px;
+      overflow-x: hidden;
+
       .pipe {
         .foreground {
           stroke: color(white);
         }
 
         &.-small {
+          top: 0;
           left: 48px;
-          top: -60px;
           width: 352px;
+        }
+      }
+
+      #takeaway-radials {
+        opacity: 0;
+        top: 1148px;
+        right: 118px;
+        width: 312px;
+        height: 312px;
+        position: absolute;
+        transition: opacity .2s ease-out;
+        path {
+          fill: none;
+          stroke-width: 1px;
+          stroke: color(white);
+          &.radial-one {
+            animation: flash 3s infinite;
+          }
+          &.radial-two {
+            animation: flash 3s infinite .5s;
+          }
         }
       }
     }
@@ -376,15 +400,20 @@ body.sm-loaded {
       }
 
       .section-art {
-        &::before {
-          left: 0;
-        }
+        top: 0;
+        overflow-x: visible;
 
         .pipe.-large {
           top: -60px;
           left: 200px;
           height: auto;
           width: 802px;
+        }
+
+        &.-complete {
+          #takeaway-radials {
+            opacity: 1;
+          }
         }
       }
 
@@ -423,9 +452,9 @@ body.sm-loaded {
         }
         #shape-7f {
           width: 169px;
+          right: 322px;
           height: 332px;
           top: $beat * 38;
-          right: $beat * 10;
         }
         #shape-7g {
           width: 97px;

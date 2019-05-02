@@ -61,8 +61,6 @@ var Main = (function($) {
     _updatePillarScenes();
     _initPillarNav();
     _initScrollMagic();
-    _smallScrollMagic();
-    _largeScrollMagic();
 
     // Esc handlers
     $(document).keyup(function(e) {
@@ -386,9 +384,6 @@ var Main = (function($) {
       var takeawayScene = new ScrollMagic.Scene({triggerElement: ".section-takeaway", duration: $('.section-takeaway .pipe.-small').outerHeight(), tweenChanges: true})
               .setTween(takeawayTween)
               .addTo(controller);
-      takeawayScene.on('end', function() {
-        $('.final-takeaway').toggleClass('highlight');
-      });
     }
   }
 
@@ -462,8 +457,9 @@ var Main = (function($) {
       var takeawayScene = new ScrollMagic.Scene({triggerElement: ".section-takeaway", offset: -40, duration: $('.section-takeaway .pipe.-large').outerHeight(), tweenChanges: true})
               .setTween(takeawayTween)
               .addTo(controller);
+
       takeawayScene.on('end', function() {
-        $('.final-takeaway').toggleClass('highlight');
+        $('.section-takeaway .section-art').toggleClass('-complete');
       });
     }
   }
