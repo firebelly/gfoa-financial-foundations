@@ -214,10 +214,12 @@ img {
     text-decoration: none;
   }
   .logo-mark {
+    flex-shrink: 0;
     width: $beat * 3;
     height: $beat * 3;
     border-radius: 50%;
     text-align: center;
+    flex-basis: $beat * 3;
     display: inline-block;
 
     svg {
