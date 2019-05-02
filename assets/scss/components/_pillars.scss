@@ -437,6 +437,7 @@
   }
 
   &.pillar-5 {
+    padding-bottom: 228px;
     padding-top: $beat * 4;
 
     .background-grid {
@@ -538,8 +539,8 @@
   }
 
   &-content {
-    padding: #{$beat * 3} 0;
     background-color: color(black);
+    padding: #{$beat * 3} 0 #{$beat * 6};
 
     > .sitewrapper {
       opacity: 0;
@@ -605,14 +606,19 @@
 #city-of-portland {
   .expandable-pillar-images {
     .image {
+      padding-bottom: 100%;
       &.-one {
-        padding-bottom: 100%;
         background-image: url('../images/portland-1_zack-spear-25262-unsplash.jpg');
       }
       &.-two {
-        width: 65.1594%;
-        height: 36.5203%;
         background-image: url('../images/portland-2_elena-kuchko-1135472-unsplash.jpg');
+      }
+      @include media-md {
+        &.-two {
+          width: 65.1594%;
+          height: 36.5203%;
+          padding-bottom: 0;
+        }
       }
     }
   }
@@ -623,7 +629,6 @@
     padding-top: 30px;
     .image {
       &.-one {
-        width: 88%;
         padding-bottom: 62.854%;
         background-image: url('../images/pittsburgh-1_vidar-nordli-mathisen-789684-unsplash.jpg');
       }
@@ -631,18 +636,26 @@
         padding-bottom: 100%;
         background-image: url('../images/pittsburgh-2_vidar-nordli-mathisen-606813-unsplash.jpg');
       }
+      @include media-md {
+        &.-one {
+          width: 88%;
+        }
+      }
     }
   }
 }
 
 #city-of-san-bernadino {
   .expandable-pillar-images {
-    padding-top: $beat * 3;
     .image {
       &.-one {
         padding-bottom: 66.8304%;
         background-image: url('../images/san-bernadino-1_owen-rupp-607232-unsplash.jpg');
       }
+    }
+
+    @include media-md {
+      padding-top: $beat * 3;
     }
   }
 }
