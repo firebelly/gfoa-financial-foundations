@@ -646,9 +646,15 @@
         left: columns(23);
         width: columns(19);
         padding: $beat $beat #{$beat * 2} $beat;
+
+        .pillar-close {
+          margin-left: -6px;
+        }
+
         &.-left {
           left: -$beat;
           width: columns(19);
+          padding-left: 42px;
         }
       }
     }

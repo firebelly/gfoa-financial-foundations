@@ -131,12 +131,20 @@ button.close {
 .pillar-expand,
 .pillar-close {
   @include p2;
+  width: 100%;
   cursor: pointer;
+  text-align: left;
   font-style: italic;
   @extend .button-reset;
   .button {
     vertical-align: middle;
     margin-right: $beat / 3;
+  }
+
+  &:hover {
+    .button {
+      top: -2px;
+    }
   }
 
   @include media-md {
