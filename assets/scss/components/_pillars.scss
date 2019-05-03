@@ -128,7 +128,7 @@
 
   // Individual Pillars
   &.pillar-1 {
-    padding-top: 182px;
+    padding-top: 182px;;
 
     .background-grid {
       top: 363px;
@@ -145,13 +145,13 @@
 
     .pillar-content {
       .pillar-expand {
-        margin-top: 45px;
+        margin-top: 28px;
       }
     }
 
     @include media-md {
+      padding-bottom: 78px;
       padding-top: #{$beat * 4};
-      padding-bottom: $beat * 2;
 
       .pillar-content {
         margin-top: $beat * 7;
@@ -240,7 +240,7 @@
     }
 
     .pillar-content {
-      padding-bottom: 36px;
+      padding-bottom: 20px;
       @include outlined-box(black);
     }
 
@@ -313,7 +313,7 @@
 
     .pillar-content {
       .pillar-expand {
-        margin-top: 26px;
+        margin-top: 18px;
       }
     }
 
@@ -404,10 +404,10 @@
     header {
       .pillar-label,
       .pillar-tagline {
-        @include boxed-text(1, black);
+        @include boxed-text(1);
       }
       .pillar-title {
-        @include boxed-text(2, black);
+        @include boxed-text(2);
       }
       .pillar-tagline span {
         line-height: 1.1;
@@ -415,11 +415,11 @@
     }
 
     .pillar-content {
-      @include outlined-box(black);
+      @include outlined-box;
     }
 
     @include media-md {
-      padding-bottom: 227px;
+      padding-bottom: 224px;
       padding-top: $beat * 11;
 
       .pillar-expand {
@@ -432,6 +432,9 @@
 
       .pillar-content {
         margin-top: $beat * 9;
+        &::before {
+          border-color: color(white);
+        }
       }
 
       .section-art {
@@ -506,7 +509,7 @@
     }
 
     .pillar-content {
-      padding-bottom: 29px;
+      padding-bottom: 37px;
     }
 
     @include media-md {

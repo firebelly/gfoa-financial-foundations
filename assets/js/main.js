@@ -487,7 +487,7 @@ var Main = (function($) {
           .add(TweenMax.to($takeawayPipe, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}));
 
         // build scene
-        var takeawayScene = new ScrollMagic.Scene({triggerElement: ".section-takeaway", offset: -40, duration: $('.section-takeaway .pipe.-large').outerHeight(), tweenChanges: true})
+        var takeawayScene = new ScrollMagic.Scene({triggerElement: ".section-takeaway", duration: $('.section-takeaway .pipe.-large').outerHeight(), tweenChanges: true})
                 .setTween(takeawayTween)
                 .addTo(controller);
 
