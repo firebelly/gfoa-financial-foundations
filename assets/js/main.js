@@ -375,7 +375,7 @@ var Main = (function($) {
                 .addTo(controller);
       })();
 
-      // Final Takeaway
+      // Final Takeaways
       (function() {
         var finalTakeaways = $('.final-takeaway span:not(.final)');
 
@@ -396,14 +396,14 @@ var Main = (function($) {
                   .addTo(controller);
         }
       })();
-
+      // Final Final Takeaway
       (function() {
         var $final = $('.final-takeaway span.final');
         var finalTween = new TimelineMax()
           .add(TweenMax.to($final, 1, {color: '#67c18c'}));
 
         // build scene
-        var finalScene = new ScrollMagic.Scene({triggerElement: $final[0], offset: -200, duration: 300, tweenChanges: true})
+        var finalScene = new ScrollMagic.Scene({triggerElement: $final[0], duration: 200, tweenChanges: true})
                 .setTween(finalTween)
                 .addTo(controller);
       })();
@@ -496,7 +496,7 @@ var Main = (function($) {
         });
       })();
 
-      // Final Takeaway
+      // Final Takeaways
       (function() {
         var finalTakeaways = $('.final-takeaway span:not(.final)');
 
@@ -517,14 +517,14 @@ var Main = (function($) {
                   .addTo(controller);
         }
       })();
-
+      // Final Final Takeaway
       (function() {
         var $final = $('.final-takeaway span.final');
         var finalTween = new TimelineMax()
           .add(TweenMax.to($final, 1, {color: '#67c18c'}));
 
         // build scene
-        var finalScene = new ScrollMagic.Scene({triggerElement: $final[0], offset: -200, duration: 300, tweenChanges: true})
+        var finalScene = new ScrollMagic.Scene({triggerElement: $final[0], duration: 200, tweenChanges: true})
                 .setTween(finalTween)
                 .addTo(controller);
       })();
