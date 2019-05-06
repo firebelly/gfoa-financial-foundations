@@ -391,7 +391,7 @@ var Main = (function($) {
           );
 
           // build scene
-          var takeawayScene = new ScrollMagic.Scene({triggerElement: $takeaway[0], offset: -40, duration: 300, tweenChanges: true})
+          var finalTakeawayScene = new ScrollMagic.Scene({triggerElement: $takeaway[0], offset: -40, duration: 300, tweenChanges: true})
                   .setTween(tl)
                   .addTo(controller);
         }
@@ -405,6 +405,23 @@ var Main = (function($) {
         // build scene
         var finalScene = new ScrollMagic.Scene({triggerElement: $final[0], duration: 200, tweenChanges: true})
                 .setTween(finalTween)
+                .addTo(controller);
+      })();
+
+      // Next Step Section
+      (function() {
+        var $nextSectionPipe = $(".section-next-step .pipe.-small path.foreground");
+
+        // prepare SVG
+        _pathPrepare($nextSectionPipe);
+
+        // build tween
+        var nextstepTween = new TimelineMax()
+          .add(TweenMax.to($nextSectionPipe, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+
+        // build scene
+        var nextStepScene = new ScrollMagic.Scene({triggerElement: ".section-next-step", offset: 0, duration: $('.section-next-step .pipe.-small').outerHeight(), tweenChanges: true})
+                .setTween(nextstepTween)
                 .addTo(controller);
       })();
 
@@ -490,10 +507,15 @@ var Main = (function($) {
         var takeawayScene = new ScrollMagic.Scene({triggerElement: ".section-takeaway", duration: $('.section-takeaway .pipe.-large').outerHeight(), tweenChanges: true})
                 .setTween(takeawayTween)
                 .addTo(controller);
+      })();
 
-        takeawayScene.on('end', function() {
-          $('.section-takeaway .section-art').toggleClass('-complete');
-        });
+      // Takeaway Raidals
+      (function() {
+        var $takeawayRadials = $('#takeaway-radials');
+
+        new ScrollMagic.Scene({triggerElement: '#takeaway-radials'})
+            .setClassToggle('#takeaway-radials', '-active')
+            .addTo(controller);
       })();
 
       // Final Takeaways
@@ -512,11 +534,12 @@ var Main = (function($) {
           );
 
           // build scene
-          var takeawayScene = new ScrollMagic.Scene({triggerElement: $takeaway[0], offset: -40, duration: 300, tweenChanges: true})
+          var finalTakeawayScene = new ScrollMagic.Scene({triggerElement: $takeaway[0], offset: -40, duration: 300, tweenChanges: true})
                   .setTween(tl)
                   .addTo(controller);
         }
       })();
+
       // Final Final Takeaway
       (function() {
         var $final = $('.final-takeaway span.final');
@@ -526,6 +549,23 @@ var Main = (function($) {
         // build scene
         var finalScene = new ScrollMagic.Scene({triggerElement: $final[0], duration: 200, tweenChanges: true})
                 .setTween(finalTween)
+                .addTo(controller);
+      })();
+
+      // Next Step Section
+      (function() {
+        var $nextSectionPipe = $(".section-next-step .pipe.-large path.foreground");
+
+        // prepare SVG
+        _pathPrepare($nextSectionPipe);
+
+        // build tween
+        var nextstepTween = new TimelineMax()
+          .add(TweenMax.to($nextSectionPipe, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}));
+
+        // build scene
+        var nextStepScene = new ScrollMagic.Scene({triggerElement: ".section-next-step", offset: 24, duration: $('.section-next-step .pipe.-large').outerHeight(), tweenChanges: true})
+                .setTween(nextstepTween)
                 .addTo(controller);
       })();
 

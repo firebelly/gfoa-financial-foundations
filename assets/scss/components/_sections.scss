@@ -49,6 +49,28 @@ body.sm-loaded {
   }
 }
 
+// Section Bumps
+.bump-container {
+  top: 0;
+  left: 50%;
+  width: 100%;
+  position: absolute;
+  transform: translateX(-50%);
+  .bump {
+    left: -6px;
+    content: '';
+    bottom: 100%;
+    width: $beat * 5;
+    position: absolute;
+    height: $beat * 2.5;
+    border-radius: #{$beat * 2.5} #{$beat * 2.5} 0 0;
+
+    @include media-md {
+      left:  $beat * 6;
+    }
+  }
+}
+
 .section {
   position: relative;
   padding: #{$beat * 3} 0;
@@ -333,27 +355,7 @@ body.sm-loaded {
 
   &.section-takeaway {
     padding-top: 88px;
-    padding-bottom: $beat * 9;
-
-    .bump-container {
-      top: 0;
-      left: 50%;
-      width: 100%;
-      position: absolute;
-      transform: translateX(-50%);
-      .bump {
-        left: -6px;
-        content: '';
-        bottom: 100%;
-        width: $beat * 5;
-        position: absolute;
-        height: $beat * 2.5;
-        background: color(black);
-        border: 1px solid color(black);
-        border-bottom: transparent;
-        border-radius: #{$beat * 2.5} #{$beat * 2.5} 0 0;
-      }
-    }
+    padding-bottom: 204px;
 
     h2 {
       @include boxed-text(3);
@@ -427,12 +429,6 @@ body.sm-loaded {
       padding-top: 155px;
       padding-bottom: $beat * 18;
 
-      .bump-container {
-        .bump {
-          left:  $beat * 6;
-        }
-      }
-
       h2 {
         margin-bottom: 128px;
       }
@@ -454,10 +450,8 @@ body.sm-loaded {
           width: 802px;
         }
 
-        &.-complete {
-          #takeaway-radials {
-            opacity: 1;
-          }
+        #takeaway-radials.-active {
+          opacity: 1;
         }
       }
 
@@ -502,9 +496,9 @@ body.sm-loaded {
         }
         #shape-7g {
           width: 97px;
-          left: -$beat;
           height: 301px;
-          top: $beat * 73;
+          left: $beat * 8;
+          top: $beat * 76;
         }
         #shape-7h {
           width: 211px;
@@ -530,7 +524,11 @@ body.sm-loaded {
       }
 
       @include media-md {
-        margin-bottom: 515px;
+        margin-bottom: 458px;
+        .-content {
+          width: columns(21.5);
+          flex-basis: columns(21.5);
+        }
       }
     }
 
@@ -606,28 +604,35 @@ body.sm-loaded {
 
   // Next Steps
   &.section-next-step {
-
-    > * + * {
-      margin-top: $beat * 4;
-
-      @include media-md {
-        margin-top: $beat * 5;
-      }
-    }
+    padding-top: 148px;
 
     .background-grid {
       height: 100%;
     }
 
     .section-title {
-      margin: 0;
       @include h1;
       color: color(blue);
       @include boxed-text(3);
+      margin: 0 0 #{$beat * 2};
+    }
+
+    .section-art {
+      .pipe {
+        top: -60px;
+        width: 10px;
+        &.-small {
+          left: $beat * 2;
+        }
+      }
     }
 
     @include media-md {
-      padding-top: $beat * 8;
+      .section-art {
+        .pipe.-large {
+          left: 200px;
+        }
+      }
 
       .shapes {
         #shape-8a {
@@ -680,6 +685,8 @@ body.sm-loaded {
 
     // Book
     .book {
+      margin-bottom: $beat * 4;
+
       .background-grid {
         display: none;
       }
@@ -777,7 +784,11 @@ body.sm-loaded {
 
     // Next Steps
     .next-steps {
+      margin-bottom: $beat * 4;
+
       @include media-md {
+        margin-bottom: $beat * 6;
+
         > .sitewrapper > .grid:first-of-type {
           margin-bottom: $beat * 3;
         }
@@ -870,23 +881,6 @@ body.sm-loaded {
     }
 
     .events {
-      .section-title {
-        @include boxed-text(2);
-        margin: 0 0 #{$beat * 2};
-        span {
-          line-height: .8;
-          height: ($beat * 2) - 1px;
-          @include media-md {
-            @include h3;
-            line-height: .8;
-          }
-        }
-
-        @include media-md {
-          margin-bottom: $beat;
-        }
-      }
-
       .event {
         padding: $beat;
         @include smooth;
