@@ -926,6 +926,13 @@ body.sm-loaded {
           .event-date {
             flex-grow: 1;
             margin-bottom: 0;
+            width: colums(2,7);
+            flex-basis: colums(2,7);
+          }
+
+          .event-details {
+            width: columns(3,7);
+            flex-basis: columns(3,7);
           }
 
           .event-venue {
@@ -938,6 +945,8 @@ body.sm-loaded {
 
           .event-link {
             margin-left: 32px;
+            width: colums(2,7);
+            flex-basis: colums(2,7);
           }
         }
       }
