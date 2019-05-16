@@ -286,8 +286,8 @@ var Main = (function($) {
     new ScrollMagic.Scene({triggerElement: '#pillar-5', triggerHook: 'onLeave'})
         .setClassToggle('#pillar-nav li[data-pillar="5"]', '-active')
         .addTo(controller);
-    new ScrollMagic.Scene({triggerElement: '#resources', triggerHook: 'onLeave'})
-        .setClassToggle('#pillar-nav li[data-section="resources"]', '-active')
+    new ScrollMagic.Scene({triggerElement: '#next-step', triggerHook: 'onLeave'})
+        .setClassToggle('#pillar-nav li[data-section="next-step"]', '-active')
         .addTo(controller);
     new ScrollMagic.Scene({triggerElement: '#events', triggerHook: 'onLeave'})
         .setClassToggle('#pillar-nav li[data-section="events"]', '-active')
