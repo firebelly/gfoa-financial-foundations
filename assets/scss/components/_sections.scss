@@ -190,8 +190,14 @@ body.sm-loaded {
   &.section-intro-video {
     margin-top: 1px;
     padding-bottom: $beat * 4;
+    > .sitewrapper {
+      height: $beat * 13;
+    }
     @include media-md {
       padding-bottom: $beat * 6;
+      > .sitewrapper {
+        height: $beat * 15;
+      }
     }
 
     .background-grid {
@@ -258,7 +264,7 @@ body.sm-loaded {
           z-index: 1;
           left: 100%;
           height: 7px;
-          width: 156px;
+          width: 110px;
           display: block;
           position: absolute;
           margin-left: -$beat;
@@ -269,11 +275,10 @@ body.sm-loaded {
 
     .video-container {
       z-index: 1;
-      padding: $beat / 2;
       position: relative;
       margin-right: -1px;
+      margin-bottom: $beat;
       border: 1px solid color(white);
-      margin-bottom: $beat * 1.5;
       background-color: color(offwhite);
 
       .video {
@@ -292,10 +297,8 @@ body.sm-loaded {
 
       @include media-md {
         float: right;
-        padding: $beat;
         margin-bottom: $beat;
-        width: ($beat * 22) + 1px;
-        margin-right: $beat - 1px;
+        width: ($beat * 25) + 1px;
       }
     }
 
@@ -1000,8 +1003,10 @@ body.sm-loaded {
       }
     }
 
-    .events {
-      .event {
+    .events,
+    .whitepapers {
+      .event,
+      .whitepaper {
         padding: $beat;
         @include smooth;
         @include outlined-box;
@@ -1013,7 +1018,8 @@ body.sm-loaded {
           font-style: italic;
         }
 
-        .event-title {
+        .event-title,
+        .whitepaper-title {
           @include h4;
           font-weight: 700;
           color: color(blue);
@@ -1030,7 +1036,8 @@ body.sm-loaded {
           }
         }
 
-        .event-link {
+        .event-link,
+        .whitepaper-link {
           margin: 0;
 
           a {
@@ -1059,7 +1066,8 @@ body.sm-loaded {
             margin: 0;
           }
 
-          .event-title {
+          .event-title,
+          .whitepaper-title {
             margin-bottom: 8px;
           }
 
@@ -1067,6 +1075,43 @@ body.sm-loaded {
             margin-left: 32px;
             width: colums(2,7);
             flex-basis: colums(2,7);
+          }
+        }
+      }
+    }
+
+    .whitepapers {
+      padding-top: $beat * 2;
+
+      @include media-md {
+        padding-top: 0;
+      }
+    }
+
+    .whitepaper {
+      .whitepaper-details {
+        p {
+          margin: 0;
+        }
+
+        @include media-md {
+          padding-right: $beat * 2;
+          margin-right: $beat * 5;
+        }
+      }
+      .whitepaper-link {
+        display: flex;
+
+        .button {
+          margin: $beat 0 0;
+          padding-left: $beat;
+          white-space: nowrap;
+          padding-right: $beat;
+        }
+
+        @include media-md {
+          .button {
+            margin: auto;
           }
         }
       }
