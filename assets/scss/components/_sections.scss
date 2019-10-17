@@ -155,6 +155,13 @@ body.sm-loaded {
         top: $beat * 22;
         right: -$beat * 2;
       }
+      #shape-1h {
+        width: 96px;
+        height: 264px;
+        top: $beat * 34;
+        right: -$beat * 3;
+        transform: translateX(100%);
+      }
     }
 
     @include media-md {
@@ -176,6 +183,94 @@ body.sm-loaded {
 
       .background-grid-container {
         padding: #{$beat * 3} 0;
+      }
+    }
+  }
+
+  // Intro Video Section
+  &.section-intro-video {
+    margin-top: 1px;
+
+    .background-grid {
+      height: auto;
+      top: $beat * 3;
+      bottom: $beat * 3;
+
+      @include media-md {
+        top: $beat * 6;
+        bottom: $beat * 6;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      @include boxed-text(2);
+
+      @include media-md {
+        span {
+          @include h3;
+          width: 100%;
+          margin-top: -5px;
+          height: ($beat * 3) - 1px;
+          &::after {
+            top: 6px;
+            bottom: -6px;
+          }
+        }
+      }
+    }
+
+    .-left {
+      .video-arrow {
+        display: none;
+        fill: color(black);
+      }
+
+      @include media-md {
+        float: left;
+        position: relative;
+        padding-top: $beat * 5;
+        width: ($beat * 11) - 1px;
+
+        .video-arrow {
+          z-index: 1;
+          left: 100%;
+          height: 7px;
+          width: 156px;
+          display: block;
+          position: absolute;
+          margin-left: -$beat;
+          top: ($beat * 6) + 10px;
+        }
+      }
+    }
+
+    .video-container {
+      z-index: 1;
+      padding: $beat;
+      position: relative;
+      margin-bottom: $beat;
+      margin-right: $beat - 1px;
+      border: 1px solid color(white);
+      background-color: color(offwhite);
+
+      .video {
+        height: 0;
+        position: relative;
+        padding-bottom: 55%;
+        iframe {
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          max-width: 100%;
+          position: absolute;
+        }
+      }
+
+      @include media-md {
+        float: right;
+        width: ($beat * 22) + 1px;
       }
     }
 
