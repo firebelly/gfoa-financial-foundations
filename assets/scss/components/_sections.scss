@@ -246,11 +246,25 @@ body.sm-loaded {
     }
 
     .-left {
+      position: relative;
       margin-bottom: $beat * 2;
+
+      .video-bent-arrow,
+      .video-arrow {
+        z-index: 1;
+        fill: color(black);
+        position: absolute;
+      }
+
+      .video-bent-arrow {
+        width: 29px;
+        height: 75px;
+        top: $beat * 1.5;
+        right: $beat + 8px;
+      }
 
       .video-arrow {
         display: none;
-        fill: color(black);
       }
 
       @include media-md {
@@ -260,13 +274,15 @@ body.sm-loaded {
         padding-top: $beat * 5;
         width: ($beat * 11) - 1px;
 
+        .video-bent-arrow {
+          display: none;
+        }
+
         .video-arrow {
-          z-index: 1;
           left: 100%;
           height: 7px;
           width: 110px;
           display: block;
-          position: absolute;
           margin-left: -$beat;
           top: ($beat * 6) + 10px;
         }
