@@ -81,7 +81,6 @@ body.sm-loaded {
 
   // Intro Section
   &.section-intro {
-    height: 100vh;
     padding-top: 60px;
     min-height: 540px;
     max-height: 800px;
@@ -178,23 +177,27 @@ body.sm-loaded {
       }
     }
 
-    @media screen and (min-width: $breakpoint-md) and (max-height: 660px) {
-      padding: #{$beat * 2} 0 0;
+    // @media screen and (min-width: $breakpoint-md) and (max-height: 660px) {
+    //   padding: #{$beat * 2} 0 0;
 
-      .background-grid-container {
-        padding: #{$beat * 3} 0;
-      }
-    }
+    //   .background-grid-container {
+    //     padding: #{$beat * 3} 0;
+    //   }
+    // }
   }
 
   // Intro Video Section
   &.section-intro-video {
     margin-top: 1px;
+    padding-bottom: $beat * 4;
+    @include media-md {
+      padding-bottom: $beat * 6;
+    }
 
     .background-grid {
       height: auto;
       top: $beat * 3;
-      bottom: $beat * 3;
+      bottom: $beat * 4;
 
       @include media-md {
         top: $beat * 6;
@@ -203,17 +206,33 @@ body.sm-loaded {
     }
 
     h2 {
-      margin: 0;
       @include boxed-text(2);
+      margin: 0;
+      line-height: 1.2;
+      height: $beat * 4;
+
+      span {
+        width: 100%;
+        margin-top: -8px;
+        height: $beat * 4;
+        &::after {
+          top: 8px;
+          right: 1px;
+          bottom: -8px;
+        }
+      }
 
       @include media-md {
+        height: auto;
+        line-height: 1.55;
+
         span {
           @include h3;
-          width: 100%;
           margin-top: -5px;
           height: ($beat * 3) - 1px;
           &::after {
             top: 6px;
+            right: 0;
             bottom: -6px;
           }
         }
@@ -221,6 +240,8 @@ body.sm-loaded {
     }
 
     .-left {
+      margin-bottom: $beat * 2;
+
       .video-arrow {
         display: none;
         fill: color(black);
@@ -228,6 +249,7 @@ body.sm-loaded {
 
       @include media-md {
         float: left;
+        margin-bottom: 0;
         position: relative;
         padding-top: $beat * 5;
         width: ($beat * 11) - 1px;
@@ -247,11 +269,11 @@ body.sm-loaded {
 
     .video-container {
       z-index: 1;
-      padding: $beat;
+      padding: $beat / 2;
       position: relative;
-      margin-bottom: $beat;
-      margin-right: $beat - 1px;
+      margin-right: -1px;
       border: 1px solid color(white);
+      margin-bottom: $beat * 1.5;
       background-color: color(offwhite);
 
       .video {
@@ -270,7 +292,10 @@ body.sm-loaded {
 
       @include media-md {
         float: right;
+        padding: $beat;
+        margin-bottom: $beat;
         width: ($beat * 22) + 1px;
+        margin-right: $beat - 1px;
       }
     }
 
